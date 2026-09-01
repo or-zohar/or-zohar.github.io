@@ -1,12 +1,12 @@
 ---
 title: "Deep Blue - Queer Art"
 tags: []
-cover: "../../assets/design-projects/deep-blue/deep-blue-01.png"
+cover: "../../assets/design-projects/deep-blue/deep-blue-02.jpg"
 featured: true
 order: -1
 ---
 
-![](../../assets/design-projects/deep-blue/deep-blue-02.jpg)
+![](../../assets/design-projects/deep-blue/deep-blue-01.png)
 
 ![](../../assets/design-projects/deep-blue/deep-blue-03.jpg)
 
