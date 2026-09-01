@@ -15,7 +15,7 @@
   --color-surface: #ffffff;
 
   /* Typography */
-  --font-display: 'Inter', system-ui, sans-serif;
+  --font-display: 'Georgia', 'Times New Roman', ui-serif, serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 

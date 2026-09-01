@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { withBase } from '@utils/url';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -8,7 +9,7 @@ interface Props {
 
 const { project } = Astro.props;
 const { title, description, tags, cover } = project.data;
-const href = project.data.externalUrl || `/projects/${project.id}`;
+const href = project.data.externalUrl || withBase(`/projects/${project.slug}`);
 ---
 
 <a href={href} class="project-card" target={project.data.externalUrl ? "_blank" : undefined}>

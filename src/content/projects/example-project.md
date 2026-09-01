@@ -5,7 +5,7 @@ date: 2024-01-01
 tags: ["UI Design", "Branding"]
 role: "Lead Designer"
 tools: ["Figma", "Illustrator"]
-cover: "../../assets/projects/placeholder.svg"
+cover: "../../assets/projects/portrait-cover.jpg"
 featured: true
 order: 1
 ---
