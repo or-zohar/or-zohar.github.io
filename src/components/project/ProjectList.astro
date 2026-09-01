@@ -14,13 +14,16 @@ const { projects, basePath } = Astro.props;
 <ul class="project-list" role="list">
   {projects.map(project => (
     <li>
-      <a href={project.data.externalUrl || withBase(`${basePath}/${project.slug}`)}>
-        <Image
-          src={project.data.cover}
-          alt={project.data.title}
-          widths={[400, 800, 1200]}
-          sizes="(max-width: 640px) 90vw, 600px"
-        />
+      <a class="project-link" href={project.data.externalUrl || withBase(`${basePath}/${project.slug}`)}>
+        <span class="project-thumb">
+          <Image
+            src={project.data.cover}
+            alt={project.data.title}
+            widths={[400, 800, 1200]}
+            sizes="(max-width: 640px) 90vw, 600px"
+          />
+          <span class="project-name">{project.data.title}</span>
+        </span>
       </a>
     </li>
   ))}
@@ -37,9 +40,43 @@ const { projects, basePath } = Astro.props;
     margin-top: var(--space-xl);
   }
 
-  .project-list img {
+  .project-link:hover {
+    opacity: 1;
+  }
+
+  .project-thumb {
+    position: relative;
+    display: block;
     width: 80%;
     margin-inline: auto;
+  }
+
+  .project-thumb img {
+    width: 100%;
     display: block;
+    transition: opacity var(--transition-fast);
+  }
+
+  .project-link:hover .project-thumb img,
+  .project-link:focus-visible .project-thumb img {
+    opacity: 0.25;
+  }
+
+  .project-name {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-md);
+    color: var(--color-bg);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  .project-link:hover .project-name,
+  .project-link:focus-visible .project-name {
+    opacity: 1;
   }
 </style>
