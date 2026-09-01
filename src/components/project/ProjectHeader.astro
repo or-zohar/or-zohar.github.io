@@ -3,22 +3,23 @@ import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   cover: ImageMetadata;
-  date: Date;
+  date?: Date;
   tags: string[];
 }
 
 const { title, description, cover, date, tags } = Astro.props;
+const meta = [
+  date?.toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
+  tags.length > 0 ? tags.join(', ') : undefined,
+].filter(Boolean).join(' — ');
 ---
 
 <header class="project-header container">
   <h1>{title}</h1>
-  <p class="project-desc">{description}</p>
-  <p class="project-meta">
-    {date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
-    {tags.length > 0 && ` — ${tags.join(', ')}`}
-  </p>
+  {description && <p class="project-desc">{description}</p>}
+  {meta && <p class="project-meta">{meta}</p>}
 
   <div class="project-cover">
     <Image src={cover} alt={title} widths={[400, 800, 1200]} sizes="(max-width: 640px) 90vw, 600px" />
