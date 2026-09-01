@@ -1,5 +1,5 @@
 ---
-title: "Deep Blue - Queer Art"
+title: "\"Deep Blue\" - Queer Art exhibition"
 tags: []
 cover: "../../assets/design-projects/deep-blue/deep-blue-02.jpg"
 featured: true
