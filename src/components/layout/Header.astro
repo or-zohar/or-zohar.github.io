@@ -3,24 +3,31 @@ import { siteConfig } from '@config/site';
 import { withBase } from '@utils/url';
 
 const year = new Date().getFullYear();
+const home = withBase('/');
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => {
+  const target = withBase(href).replace(/\/$/, '');
+  return currentPath === target || currentPath.startsWith(`${target}/`);
+};
 ---
 
 <header class="site-header">
   <div class="container">
     <p class="site-title">
-      &copy; {year}, {siteConfig.name}<br />
+      &copy; {year}, <a href={home}>{siteConfig.name}</a><br />
       {siteConfig.tagline}
     </p>
 
     <nav class="site-nav" aria-label="Main navigation">
       <ul class="nav-group" role="list">
         {siteConfig.nav.work.map(link => (
-          <li><a href={withBase(link.href)}>{link.label}</a></li>
+          <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
         ))}
       </ul>
       <ul class="nav-group" role="list">
         {siteConfig.nav.pages.map(link => (
-          <li><a href={withBase(link.href)}>{link.label}</a></li>
+          <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
         ))}
       </ul>
     </nav>
@@ -54,5 +61,9 @@ const year = new Date().getFullYear();
 
   .nav-group li {
     line-height: 1.6;
+  }
+
+  .nav-group a[aria-current="page"] {
+    opacity: 0.6;
   }
 </style>

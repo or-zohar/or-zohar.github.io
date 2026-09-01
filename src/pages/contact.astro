@@ -5,7 +5,6 @@ import { siteConfig } from '@config/site';
 
 <BaseLayout title={`Contact — ${siteConfig.name}`} description={`Get in touch with ${siteConfig.name}`}>
   <section class="container contact">
-    <h1>Contact</h1>
     <ul class="contact-list" role="list">
       {siteConfig.social.map(link => (
         <li><a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">{link.label}</a></li>
