@@ -1,5 +1,5 @@
 ---
-title: "Friends"
+title: "\"people I've met along the way\""
 tags: []
 cover: "../../assets/photo-projects/friends/friends-01.jpg"
 featured: true
