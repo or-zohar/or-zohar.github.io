@@ -5,80 +5,48 @@ interface Props {
   title: string;
   description: string;
   cover: ImageMetadata;
-  role?: string;
   date: Date;
-  tools?: string[];
   tags: string[];
 }
 
-const { title, description, cover, role, date, tools, tags } = Astro.props;
+const { title, description, cover, date, tags } = Astro.props;
 ---
 
-<header class="project-header">
-  <div class="container">
-    <h1>{title}</h1>
-    <p class="project-desc">{description}</p>
-    
-    <div class="project-meta">
-      {role && <div class="meta-item"><span class="meta-label">Role</span><span>{role}</span></div>}
-      <div class="meta-item">
-        <span class="meta-label">Date</span>
-        <span>{date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>
-      </div>
-      {tools && tools.length > 0 && (
-        <div class="meta-item">
-          <span class="meta-label">Tools</span>
-          <span>{tools.join(', ')}</span>
-        </div>
-      )}
-    </div>
-  </div>
+<header class="project-header container">
+  <h1>{title}</h1>
+  <p class="project-desc">{description}</p>
+  <p class="project-meta">
+    {date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+    {tags.length > 0 && ` — ${tags.join(', ')}`}
+  </p>
 
-  <div class="project-cover container">
-    <Image src={cover} alt={title} widths={[800, 1200, 1600]} sizes="100vw" />
+  <div class="project-cover">
+    <Image src={cover} alt={title} widths={[400, 800, 1200]} sizes="(max-width: 640px) 90vw, 600px" />
   </div>
 </header>
 
 <style>
   .project-header {
-    padding-top: var(--space-xl);
+    text-align: center;
+    padding-bottom: var(--space-xl);
   }
 
   .project-desc {
     color: var(--color-text-secondary);
-    font-size: 1.125rem;
-    max-width: 60ch;
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
   }
 
   .project-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-lg);
-    margin-top: var(--space-lg);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  .meta-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    margin-top: var(--space-sm);
   }
 
   .project-cover {
-    margin-top: var(--space-xl);
+    margin-top: var(--space-lg);
   }
 
   .project-cover img {
     width: 100%;
-    border-radius: var(--border-radius);
   }
 </style>

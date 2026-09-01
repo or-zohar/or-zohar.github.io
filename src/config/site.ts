@@ -3,21 +3,26 @@
 
 export const siteConfig = {
   name: 'Or Zohar Weizman',
-  title: 'Or Zohar Weizman — Portfolio',
-  description: 'Design portfolio showcasing selected works.',
-  url: 'https://example.com',
-  
-  // Navigation links
-  nav: [
-    { label: 'Work', href: '/work' },
-    { label: 'About', href: '/about' },
-  ],
+  tagline: 'Photography and Graphic Design',
+  title: 'Or Zohar Weizman — Photography and Graphic Design',
+  description: 'Photography and graphic design portfolio.',
+  url: 'https://oriweizman71-web.github.io/or-zohar-weizman-portfolio',
+
+  // Navigation, grouped to match the header layout (work links, then page links)
+  nav: {
+    work: [
+      { label: 'Photo Projects', href: '/photo-projects' },
+      { label: 'Design Projects', href: '/design-projects' },
+    ],
+    pages: [
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
 
   // Social links (add or remove as needed)
   social: [
-    { label: 'Email', href: 'mailto:hello@example.com' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/yourname' },
-    { label: 'Instagram', href: 'https://instagram.com/yourname' },
-    { label: 'Behance', href: 'https://behance.net/yourname' },
+    { label: 'Email', href: 'mailto:oriweizman71@gmail.com' },
+    { label: 'Instagram', href: 'https://www.instagram.com/or_zohar/' },
   ],
 };

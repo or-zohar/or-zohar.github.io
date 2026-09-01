@@ -4,16 +4,16 @@ import ProjectHeader from '@components/project/ProjectHeader.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  project: CollectionEntry<'projects'>;
+  project: CollectionEntry<'photo-projects'> | CollectionEntry<'design-projects'>;
 }
 
 const { project } = Astro.props;
-const { title, description, cover, role, date, tools, tags } = project.data;
+const { title, description, cover, date, tags } = project.data;
 ---
 
 <BaseLayout title={`${title} — Portfolio`} description={description}>
   <article>
-    <ProjectHeader {title} {description} {cover} {role} {date} {tools} {tags} />
+    <ProjectHeader {title} {description} {cover} {date} {tags} />
     <div class="container project-content">
       <slot />
     </div>
@@ -22,8 +22,7 @@ const { title, description, cover, role, date, tools, tags } = project.data;
 
 <style>
   .project-content {
-    padding: var(--space-xl) 0 var(--space-2xl);
-    max-width: 48rem;
+    padding-bottom: var(--space-2xl);
   }
 
   .project-content :global(p) {
@@ -33,7 +32,6 @@ const { title, description, cover, role, date, tools, tags } = project.data;
 
   .project-content :global(img) {
     width: 100%;
-    border-radius: var(--border-radius);
     margin: var(--space-lg) 0;
   }
 

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteConfig } from '@config/site';
+---
+
+<BaseLayout title={`Contact — ${siteConfig.name}`} description={`Get in touch with ${siteConfig.name}`}>
+  <section class="container contact">
+    <h1>Contact</h1>
+    <ul class="contact-list" role="list">
+      {siteConfig.social.map(link => (
+        <li><a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">{link.label}</a></li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact {
+    text-align: center;
+    padding-bottom: var(--space-2xl);
+  }
+
+  .contact-list {
+    list-style: none;
+    margin-top: var(--space-lg);
+    padding: 0;
+  }
+
+  .contact-list li {
+    line-height: 1.8;
+  }
+</style>

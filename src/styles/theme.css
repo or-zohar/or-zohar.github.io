@@ -1,23 +1,17 @@
 @import "tailwindcss";
 
 /* ===== DESIGN TOKENS =====
-   Edit these to change the entire look of your site.
-   All components reference these variables. */
+   Minimal black-on-white design. Edit these to change the whole site. */
 
 :root {
-  /* Colors */
-  --color-bg: #fafafa;
-  --color-text: #1a1a1a;
-  --color-text-secondary: #666666;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-border: #e5e5e5;
-  --color-surface: #ffffff;
+  /* Colors — deliberately monochrome, no dark mode */
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-text-secondary: #555555;
+  --color-border: #dddddd;
 
   /* Typography */
-  --font-display: 'Georgia', 'Times New Roman', ui-serif, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: Arial, Helvetica, 'Segoe UI', sans-serif;
 
   /* Spacing (8px base) */
   --space-xs: 0.25rem;
@@ -25,29 +19,14 @@
   --space-md: 1rem;
   --space-lg: 2rem;
   --space-xl: 4rem;
-  --space-2xl: 8rem;
+  --space-2xl: 6rem;
 
   /* Layout */
-  --max-width: 1200px;
-  --nav-height: 4rem;
-  --border-radius: 0.5rem;
+  --content-width: 640px;
 
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 300ms ease;
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0a0a0a;
-    --color-text: #fafafa;
-    --color-text-secondary: #a0a0a0;
-    --color-accent: #60a5fa;
-    --color-accent-hover: #93c5fd;
-    --color-border: #262626;
-    --color-surface: #141414;
-  }
 }
 
 /* ===== BASE STYLES ===== */
@@ -75,13 +54,13 @@ body {
 
 /* Focus styles */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 1px solid var(--color-text);
   outline-offset: 2px;
 }
 
 /* Container utility */
 .container {
-  max-width: var(--max-width);
+  max-width: var(--content-width);
   margin-inline: auto;
   padding-inline: var(--space-lg);
 }
@@ -89,23 +68,23 @@ body {
 /* ===== TYPOGRAPHY ===== */
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-family: var(--font-body);
+  font-weight: normal;
+  line-height: 1.25;
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.125rem; }
+h3 { font-size: 1rem; }
 
 /* ===== LINKS ===== */
 
 a {
-  color: var(--color-accent);
+  color: var(--color-text);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: opacity var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-accent-hover);
+  opacity: 0.6;
 }

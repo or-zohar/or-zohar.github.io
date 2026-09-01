@@ -1,11 +1,15 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import Hero from '@components/home/Hero.astro';
-import ProjectGrid from '@components/home/ProjectGrid.astro';
+import Gallery from '@components/home/Gallery.astro';
 import { siteConfig } from '@config/site';
 ---
 
 <BaseLayout title={siteConfig.title} description={siteConfig.description}>
-  <Hero />
-  <ProjectGrid />
+  <Gallery />
 </BaseLayout>
+
+<style>
+  main {
+    padding-bottom: var(--space-2xl);
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+import { siteConfig } from '@config/site';
+import { withBase } from '@utils/url';
+
+const year = new Date().getFullYear();
+---
+
+<header class="site-header">
+  <div class="container">
+    <p class="site-title">
+      &copy; {year}, {siteConfig.name}<br />
+      {siteConfig.tagline}
+    </p>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul class="nav-group" role="list">
+        {siteConfig.nav.work.map(link => (
+          <li><a href={withBase(link.href)}>{link.label}</a></li>
+        ))}
+      </ul>
+      <ul class="nav-group" role="list">
+        {siteConfig.nav.pages.map(link => (
+          <li><a href={withBase(link.href)}>{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+    text-align: center;
+  }
+
+  .site-title {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .site-nav {
+    margin-top: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .nav-group {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-group li {
+    line-height: 1.6;
+  }
+</style>
