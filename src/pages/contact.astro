@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import PagesNav from '@components/layout/PagesNav.astro';
 import { siteConfig } from '@config/site';
 ---
 
@@ -11,12 +12,16 @@ import { siteConfig } from '@config/site';
       ))}
     </ul>
   </section>
+  <PagesNav />
 </BaseLayout>
 
 <style>
+  main {
+    padding-bottom: var(--space-2xl);
+  }
+
   .contact {
     text-align: center;
-    padding-bottom: var(--space-2xl);
   }
 
   .contact-list {

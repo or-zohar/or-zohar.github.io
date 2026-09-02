@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import PagesNav from '@components/layout/PagesNav.astro';
 import { siteConfig } from '@config/site';
 import aboutPhoto from '@assets/about/about-photo.jpg';
 ---
@@ -15,12 +16,16 @@ import aboutPhoto from '@assets/about/about-photo.jpg';
     </p>
     <Image src={aboutPhoto} alt="" widths={[200, 400]} sizes="200px" class="about-photo" />
   </section>
+  <PagesNav />
 </BaseLayout>
 
 <style>
+  main {
+    padding-bottom: var(--space-2xl);
+  }
+
   .about {
     text-align: center;
-    padding-bottom: var(--space-2xl);
   }
 
   .about p {

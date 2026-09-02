@@ -1,39 +1,17 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Gallery from '@components/home/Gallery.astro';
+import PagesNav from '@components/layout/PagesNav.astro';
 import { siteConfig } from '@config/site';
-import { withBase } from '@utils/url';
 ---
 
 <BaseLayout title={siteConfig.title} description={siteConfig.description}>
   <Gallery />
-
-  <nav class="home-nav" aria-label="Site pages">
-    <ul role="list">
-      {siteConfig.nav.pages.map(link => (
-        <li><a href={withBase(link.href)}>{link.label}</a></li>
-      ))}
-    </ul>
-  </nav>
+  <PagesNav />
 </BaseLayout>
 
 <style>
   main {
     padding-bottom: var(--space-2xl);
-  }
-
-  .home-nav {
-    margin-top: var(--space-xl);
-    text-align: center;
-  }
-
-  .home-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .home-nav li {
-    line-height: 1.6;
   }
 </style>
