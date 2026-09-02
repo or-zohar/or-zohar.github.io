@@ -8,3 +8,5 @@ order: 3
 ---
 
 ![](../../assets/design-projects/photo-action/photo-action-02.jpg)
+
+![](../../assets/design-projects/photo-action/photo-action-03.jpg)
