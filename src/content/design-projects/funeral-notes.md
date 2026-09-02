@@ -1,5 +1,6 @@
 ---
 title: "Funeral notes, \"The Stranger\" - Albert Camus"
+description: "A zine of photographs taken during a family member's funeral, as a way of escaping and disconnecting from the moment, paired with quotes from Albert Camus's \"The Stranger.\""
 tags: []
 cover: "../../assets/design-projects/funeral-notes/funeral-notes-01.jpg"
 featured: true
