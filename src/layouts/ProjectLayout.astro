@@ -18,6 +18,10 @@ const { title, description, cover, date, tags, hideCoverOnDetail } = project.dat
       <slot />
     </div>
   </article>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" alt="" />
+  </div>
 </BaseLayout>
 
 <style>
@@ -41,4 +45,60 @@ const { title, description, cover, date, tags, hideCoverOnDetail } = project.dat
     margin-top: var(--space-xl);
     margin-bottom: var(--space-md);
   }
+
+  article :global(.project-cover img),
+  .project-content :global(img) {
+    cursor: zoom-in;
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    padding: var(--space-lg);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: zoom-out;
+  }
 </style>
+
+<script>
+  function largestSrc(img: HTMLImageElement) {
+    if (!img.srcset) return img.src;
+    const candidates = img.srcset.split(',').map(entry => {
+      const [url, width] = entry.trim().split(/\s+/);
+      return { url, width: parseInt(width) || 0 };
+    });
+    candidates.sort((a, b) => b.width - a.width);
+    return candidates[0]?.url || img.src;
+  }
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+
+  document.querySelectorAll('article .project-cover img, .project-content img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = largestSrc(img as HTMLImageElement);
+      lightboxImg.alt = (img as HTMLImageElement).alt;
+      lightbox?.classList.add('active');
+    });
+  });
+
+  lightbox?.addEventListener('click', event => {
+    if (event.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+</script>
