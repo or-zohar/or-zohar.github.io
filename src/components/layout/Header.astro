@@ -15,7 +15,7 @@ const isActive = (href: string) => {
 <header class="site-header">
   <div class="container">
     <p class="site-title">
-      <a href={home}>&copy; {year}, {siteConfig.name}</a><br />
+      <a href={home}>&copy; {year}, <span class="site-name">{siteConfig.name}</span></a><br />
       {siteConfig.tagline}
     </p>
 
@@ -44,6 +44,10 @@ const isActive = (href: string) => {
   .site-title {
     font-size: 1rem;
     line-height: 1.5;
+  }
+
+  .site-name {
+    text-transform: uppercase;
   }
 
   .site-nav {
