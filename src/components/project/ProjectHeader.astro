@@ -7,9 +7,10 @@ interface Props {
   cover: ImageMetadata;
   date?: Date;
   tags: string[];
+  showCover?: boolean;
 }
 
-const { title, description, cover, date, tags } = Astro.props;
+const { title, description, cover, date, tags, showCover = true } = Astro.props;
 const meta = [
   date?.toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
   tags.length > 0 ? tags.join(', ') : undefined,
@@ -21,9 +22,11 @@ const meta = [
   {description && <p class="project-desc">{description}</p>}
   {meta && <p class="project-meta">{meta}</p>}
 
-  <div class="project-cover">
-    <Image src={cover} alt={title} widths={[400, 800, 1200]} sizes="(max-width: 640px) 90vw, 600px" />
-  </div>
+  {showCover && (
+    <div class="project-cover">
+      <Image src={cover} alt={title} widths={[400, 800, 1200]} sizes="(max-width: 640px) 90vw, 600px" />
+    </div>
+  )}
 </header>
 
 <style>

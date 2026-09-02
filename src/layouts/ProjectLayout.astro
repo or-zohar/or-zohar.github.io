@@ -8,12 +8,12 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, description, cover, date, tags } = project.data;
+const { title, description, cover, date, tags, hideCoverOnDetail } = project.data;
 ---
 
 <BaseLayout title={`${title} — Portfolio`} description={description}>
   <article>
-    <ProjectHeader {title} {description} {cover} {date} {tags} />
+    <ProjectHeader {title} {description} {cover} {date} {tags} showCover={!hideCoverOnDetail} />
     <div class="container project-content">
       <slot />
     </div>

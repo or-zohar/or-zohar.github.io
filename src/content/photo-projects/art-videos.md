@@ -2,6 +2,7 @@
 title: "Art Videos"
 tags: []
 cover: "../../assets/photo-projects/art-videos/art-videos-cover.jpg"
+hideCoverOnDetail: true
 featured: true
 order: 1
 ---

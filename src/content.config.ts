@@ -9,6 +9,7 @@ const projectSchema = ({ image }: { image: () => z.ZodType }) =>
     role: z.string().optional(),
     tools: z.array(z.string()).optional(),
     cover: image(),
+    hideCoverOnDetail: z.boolean().default(false),
     featured: z.boolean().default(false),
     order: z.number().default(0),
     externalUrl: z.string().url().optional(),
