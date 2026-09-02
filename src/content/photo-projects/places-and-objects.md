@@ -1,10 +1,12 @@
 ---
-title: "Places and Objects"
+title: "\"Places and Objects\""
 tags: []
-cover: "../../assets/photo-projects/places-and-objects/places-and-objects-01.jpg"
+cover: "../../assets/photo-projects/places-and-objects/places-and-objects-12.jpg"
 featured: true
 order: 0
 ---
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-01.jpg)
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-02.jpg)
 
@@ -25,8 +27,6 @@ order: 0
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-10.jpg)
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-11.jpg)
-
-![](../../assets/photo-projects/places-and-objects/places-and-objects-12.jpg)
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-13.jpg)
 
