@@ -1,5 +1,5 @@
 ---
-title: "rice"
+title: "\"rice.\""
 tags: []
 cover: "../../assets/design-projects/rice/rice-01.jpg"
 featured: true
