@@ -1,15 +1,18 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { siteConfig } from '@config/site';
+import aboutPhoto from '@assets/about/about-photo.jpg';
 ---
 
 <BaseLayout title={`About — ${siteConfig.name}`} description={`About ${siteConfig.name}`}>
   <section class="container about">
     <p>
-      Portrait photographer and visual communication student, with a strong
+      Analog photographer and visual communication student, with a strong
       affinity for culture and arts. Focused on typography, print design,
-      branding, and art direction.
+      branding and art direction.
     </p>
+    <Image src={aboutPhoto} alt="" widths={[200, 400]} sizes="200px" class="about-photo" />
   </section>
 </BaseLayout>
 
@@ -22,5 +25,11 @@ import { siteConfig } from '@config/site';
   .about p {
     max-width: 50ch;
     margin-inline: auto;
+  }
+
+  .about-photo {
+    display: block;
+    width: 200px;
+    margin: var(--space-xl) auto 0;
   }
 </style>
