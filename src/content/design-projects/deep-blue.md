@@ -1,5 +1,6 @@
 ---
 title: "\"Deep Blue\" - Queer Art exhibition"
+description: "Graphic design and production for Queer Art exhibition at Bezalel academy, featuring leading artists alongside art students. Curated by Yativ Zvi Cohen."
 tags: []
 cover: "../../assets/design-projects/deep-blue/deep-blue-02.jpg"
 featured: true
