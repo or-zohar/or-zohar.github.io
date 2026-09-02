@@ -6,7 +6,7 @@ export const siteConfig = {
   tagline: 'Photography and Graphic Design',
   title: 'Or Zohar Weizman — Photography and Graphic Design',
   description: 'Photography and graphic design portfolio.',
-  url: 'https://or-zohar.github.io/or-zohar-weizman-portfolio',
+  url: 'https://or-zohar.github.io',
 
   // Navigation, grouped to match the header layout (work links, then page links)
   nav: {
