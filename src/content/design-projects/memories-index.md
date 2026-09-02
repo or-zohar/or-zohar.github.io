@@ -1,5 +1,5 @@
 ---
-title: "memories: index"
+title: "\"memories: index\""
 tags: []
 cover: "../../assets/design-projects/memories-index/memories-index-01.jpg"
 featured: true
