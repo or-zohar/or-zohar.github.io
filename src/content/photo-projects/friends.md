@@ -1,5 +1,6 @@
 ---
 title: "\"people I've met along the way\""
+description: "Portraits I've taken over the last seven years — family, friends, loves, and complete strangers, captured as special moments and emotions I was fortunate to witness. All shot on analog cameras, across various formats."
 tags: []
 cover: "../../assets/photo-projects/friends/friends-01.jpg"
 featured: true
