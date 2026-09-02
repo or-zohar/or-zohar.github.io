@@ -18,16 +18,18 @@ const isActive = (href: string) => {
       <a href={home}>&copy; {year}, <span class="site-name">{siteConfig.name}</span></a><br />
       {siteConfig.tagline}
     </p>
-
-    <nav class="site-nav" aria-label="Main navigation">
-      <ul class="nav-group" role="list">
-        {siteConfig.nav.work.map(link => (
-          <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
-        ))}
-      </ul>
-    </nav>
   </div>
 </header>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="container">
+    <ul class="nav-group" role="list">
+      {siteConfig.nav.work.map(link => (
+        <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</nav>
 
 <style>
   .site-header {
@@ -35,7 +37,7 @@ const isActive = (href: string) => {
     top: 0;
     z-index: 50;
     padding-top: calc(var(--space-2xl) / 2);
-    padding-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
     text-align: center;
     mix-blend-mode: difference;
     color: #ffffff;
@@ -55,10 +57,8 @@ const isActive = (href: string) => {
   }
 
   .site-nav {
-    margin-top: var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
+    padding-bottom: var(--space-xl);
+    text-align: center;
   }
 
   .nav-group {
