@@ -6,7 +6,7 @@
 :root {
   /* Colors — deliberately monochrome, no dark mode */
   --color-bg: #fdfbf9;
-  --color-text: #000000;
+  --color-text: #333333;
   --color-text-secondary: #555555;
   --color-border: #dddddd;
 
