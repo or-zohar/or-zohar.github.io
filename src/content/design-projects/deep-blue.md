@@ -6,8 +6,6 @@ featured: true
 order: -1
 ---
 
-![](../../assets/design-projects/deep-blue/deep-blue-01.png)
-
 ![](../../assets/design-projects/deep-blue/deep-blue-03.jpg)
 
 ![](../../assets/design-projects/deep-blue/deep-blue-04.jpg)
