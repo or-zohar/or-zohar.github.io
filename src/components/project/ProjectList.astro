@@ -22,6 +22,7 @@ const { projects, basePath, thumbWidth = '56%' } = Astro.props;
             alt={project.data.title}
             widths={[400, 800, 1200]}
             sizes="(max-width: 640px) 90vw, 600px"
+            quality={100}
           />
           <span class="project-name">{project.data.title}</span>
         </span>
