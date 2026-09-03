@@ -1,5 +1,6 @@
 ---
 title: "\"Places and Objects\""
+description: "Landscape and still-life photographs shot on film. A lasting connection to open spaces and natural materials."
 tags: []
 cover: "../../assets/photo-projects/places-and-objects/places-and-objects-12.jpg"
 featured: true
