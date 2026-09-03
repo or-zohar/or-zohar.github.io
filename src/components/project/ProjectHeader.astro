@@ -19,7 +19,16 @@ const meta = [
 
 <header class="project-header container">
   <h1>{title}</h1>
-  {description && <p class="project-desc">{description}</p>}
+  {description && (
+    <p class="project-desc">
+      {description.split('{mobile-break}').map((part, i, arr) => (
+        <>
+          {part}
+          {i < arr.length - 1 && <span class="mobile-break" />}
+        </>
+      ))}
+    </p>
+  )}
   {meta && <p class="project-meta">{meta}</p>}
 
   {showCover && (
@@ -46,6 +55,16 @@ const meta = [
     max-width: 80%;
     margin-inline: auto;
     white-space: pre-line;
+  }
+
+  .mobile-break {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .mobile-break {
+      display: block;
+    }
   }
 
   .project-meta {

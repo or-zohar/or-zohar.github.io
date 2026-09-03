@@ -1,6 +1,6 @@
 ---
-title: "\"Deep Blue\" - Queer Art exhibition"
-description: "Graphic design and production for Queer Art exhibition at Bezalel academy, featuring leading artists alongside art students. - 2026\nCurator: Yativ Zvi Cohen, photos: Daniel Hanoch."
+title: "\"Deep Blue\""
+description: "Graphic design and production for Queer Art exhibition at Bezalel academy, featuring leading artists alongside art students. - 2026\nCurator: Yativ Zvi Cohen,{mobile-break}photos: Daniel Hanoch."
 tags: []
 cover: "../../assets/design-projects/deep-blue/deep-blue-02.jpg"
 featured: true
