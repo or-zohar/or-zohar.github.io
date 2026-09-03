@@ -100,3 +100,9 @@ order: -1
 ![](../../assets/photo-projects/friends/friends-47.jpg)
 
 ![](../../assets/photo-projects/friends/friends-48.jpg)
+
+![](../../assets/photo-projects/friends/friends-49.jpg)
+
+![](../../assets/photo-projects/friends/friends-50.jpg)
+
+![](../../assets/photo-projects/friends/friends-51.jpg)

@@ -60,3 +60,11 @@ order: 0
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-27.jpg)
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-28.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-29.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-30.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-31.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-32.jpg)
