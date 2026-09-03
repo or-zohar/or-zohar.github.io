@@ -30,10 +30,13 @@ const { title, description, cover, date, tags, hideCoverOnDetail } = project.dat
   }
 
   .project-content :global(p) {
-    max-width: 80%;
-    margin-inline: auto;
     margin-bottom: var(--space-md);
     line-height: 1.75;
+  }
+
+  .project-content :global(p):not(:has(> img, > video)) {
+    max-width: 80%;
+    margin-inline: auto;
   }
 
   .project-content :global(img),
