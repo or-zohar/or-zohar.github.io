@@ -2,14 +2,14 @@
 title: "\"FOOD PHOTOGRAPHY\""
 description: "My path in photography began with a strong pull toward the kitchen — this is a collection of food photographs I made early on."
 tags: []
-cover: "../../assets/photo-projects/food-photography/food-photography-01.jpg"
+cover: "../../assets/photo-projects/food-photography/food-photography-03.jpg"
 featured: true
 order: 2
 ---
 
-![](../../assets/photo-projects/food-photography/food-photography-02.jpg)
+![](../../assets/photo-projects/food-photography/food-photography-01.jpg)
 
-![](../../assets/photo-projects/food-photography/food-photography-03.jpg)
+![](../../assets/photo-projects/food-photography/food-photography-02.jpg)
 
 ![](../../assets/photo-projects/food-photography/food-photography-04.jpg)
 
