@@ -30,3 +30,11 @@ order: -1
 ![](../../assets/design-projects/deep-blue/deep-blue-13.jpg)
 
 ![](../../assets/design-projects/deep-blue/deep-blue-14.jpg)
+
+![](../../assets/design-projects/deep-blue/deep-blue-15.jpg)
+
+![](../../assets/design-projects/deep-blue/deep-blue-16.jpg)
+
+![](../../assets/design-projects/deep-blue/deep-blue-17.jpg)
+
+![](../../assets/design-projects/deep-blue/deep-blue-18.jpg)
