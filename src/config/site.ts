@@ -15,8 +15,8 @@ export const siteConfig = {
       { label: 'DESIGN', href: '/design-projects' },
     ],
     pages: [
-      { label: 'About', href: '/about' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'ABOUT', href: '/about' },
+      { label: 'CONTACT', href: '/contact' },
     ],
   },
 
