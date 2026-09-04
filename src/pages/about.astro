@@ -9,10 +9,10 @@ import aboutPhoto from '@assets/about/about-photo.jpg';
 <BaseLayout title={`About — ${siteConfig.name}`} description={`About ${siteConfig.name}`}>
   <section class="container about">
     <p>
-      Analog photographer and visual communication student at Bezalel
-      Academy of Arts and Design, with a strong affinity for culture and
-      arts. Focused on typography, print design, branding and art
-      direction.
+      Hello! I am a photographer and visual communication student at
+      Bezalel Academy of Arts and Design, with a strong affinity for
+      culture and arts. I am Focused on typography, print design,
+      branding and art direction.
     </p>
     <Image src={aboutPhoto} alt="" widths={[200, 400]} sizes="200px" class="about-photo" />
   </section>
@@ -51,6 +51,10 @@ import aboutPhoto from '@assets/about/about-photo.jpg';
   @media (max-width: 640px) {
     .about {
       padding-inline: 24px;
+    }
+
+    .about p {
+      max-width: 40ch;
     }
 
     .about-photo {
