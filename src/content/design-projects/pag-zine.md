@@ -1,6 +1,6 @@
 ---
 title: "PAG ZINE"
-description: "A xerox zine made from photographs I took in the performers' room of the PAG party line."
+description: "A xerox zine made from photographs I took in the performers' room of the \"PAG\" party line."
 tags: []
 cover: "../../assets/design-projects/pag-zine/pag-zine-01.jpg"
 featured: true

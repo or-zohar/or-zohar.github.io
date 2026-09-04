@@ -1,6 +1,6 @@
 ---
 title: "\"memories: index\""
-description: "A one-week course project at Bezalel exploring memory preservation — a book of photographs I took and objects I collected on a journey through the Far East."
+description: "A one-week course project at Bezalel exploring memory preservation. A book of photographs I took and objects I collected on a journey through the Far East."
 tags: []
 cover: "../../assets/design-projects/memories-index/memories-index-01.jpg"
 featured: true

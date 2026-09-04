@@ -1,6 +1,6 @@
 ---
 title: "FOOD PHOTOGRAPHY"
-description: "My path in photography began with a strong pull toward the kitchen — this is a collection of food photographs I made early on."
+description: "My path in photography began with a strong pull toward the kitchen. This is a collection of food photographs I made early on."
 tags: []
 cover: "../../assets/photo-projects/food-photography/food-photography-03.jpg"
 featured: true
