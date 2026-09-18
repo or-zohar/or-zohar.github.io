@@ -2,6 +2,14 @@
 import { siteConfig } from '@config/site';
 import { withBase } from '@utils/url';
 
+interface Props {
+  projectTitle?: string;
+  projectDescription?: string;
+  backHref?: string;
+}
+
+const { projectTitle, projectDescription, backHref } = Astro.props;
+
 const home = withBase('/');
 const year = new Date().getFullYear();
 
@@ -14,7 +22,14 @@ const isActive = (href: string) => {
 
 <header class="site-header">
   <div class="header-inner">
-    <a href={home} class="site-name">&copy; {year}, {siteConfig.name}</a>
+    {projectTitle ? (
+      <div class="project-id">
+        <p class="project-title">{projectTitle}</p>
+        {projectDescription && <p class="project-description">{projectDescription}</p>}
+      </div>
+    ) : (
+      <a href={home} class="site-name">&copy; {year}, {siteConfig.name}</a>
+    )}
     <nav class="site-nav work-nav" aria-label="Work navigation">
       <ul role="list">
         {siteConfig.nav.work.map(link => (
@@ -22,13 +37,19 @@ const isActive = (href: string) => {
         ))}
       </ul>
     </nav>
-    <nav class="site-nav pages-nav" aria-label="Pages navigation">
-      <ul role="list">
-        {siteConfig.nav.pages.map(link => (
-          <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
-        ))}
-      </ul>
-    </nav>
+    {backHref ? (
+      <nav class="site-nav back-nav" aria-label="Back navigation">
+        <a href={withBase(backHref)} data-back>BACK</a>
+      </nav>
+    ) : (
+      <nav class="site-nav pages-nav" aria-label="Pages navigation">
+        <ul role="list">
+          {siteConfig.nav.pages.map(link => (
+            <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
   </div>
 </header>
 
@@ -55,11 +76,27 @@ const isActive = (href: string) => {
     text-transform: uppercase;
   }
 
+  .project-id {
+    justify-self: start;
+  }
+
+  .project-title,
+  .project-description {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .project-description {
+    opacity: 0.6;
+  }
+
   .work-nav {
     justify-self: center;
   }
 
-  .pages-nav {
+  .pages-nav,
+  .back-nav {
     justify-self: end;
   }
 
@@ -84,8 +121,10 @@ const isActive = (href: string) => {
     }
 
     .site-name,
+    .project-id,
     .work-nav,
-    .pages-nav {
+    .pages-nav,
+    .back-nav {
       justify-self: center;
     }
 
@@ -94,8 +133,21 @@ const isActive = (href: string) => {
       gap: var(--space-md);
     }
 
-    .site-name {
+    .site-name,
+    .project-title,
+    .project-description {
       font-size: 0.875rem;
     }
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-back]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (window.history.length > 1) {
+        event.preventDefault();
+        window.history.back();
+      }
+    });
+  });
+</script>
