@@ -1,9 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-
-export type Slide =
-  | { type: 'image'; src: ImageMetadata; alt: string }
-  | { type: 'video'; src: string; poster: string };
+import type { Slide } from './media';
 
 interface Props {
   slides: Slide[];
