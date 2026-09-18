@@ -75,11 +75,20 @@ const isActive = (href: string) => {
 
   @media (max-width: 640px) {
     .header-inner {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-sm);
       padding-inline: var(--space-md);
-      column-gap: var(--space-sm);
+      text-align: center;
+    }
+
+    .site-name,
+    .work-nav,
+    .pages-nav {
+      justify-self: center;
     }
 
     .site-nav ul {
+      justify-content: center;
       gap: var(--space-md);
     }
 
