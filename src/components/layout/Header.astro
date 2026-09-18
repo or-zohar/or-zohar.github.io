@@ -8,7 +8,8 @@ interface Props {
   backHref?: string;
 }
 
-const { projectTitle, projectDescription, backHref } = Astro.props;
+const { projectTitle, backHref } = Astro.props;
+const projectDescription = Astro.props.projectDescription?.replaceAll('{mobile-break}', ' ');
 
 const home = withBase('/');
 const year = new Date().getFullYear();
