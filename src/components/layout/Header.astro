@@ -3,6 +3,7 @@ import { siteConfig } from '@config/site';
 import { withBase } from '@utils/url';
 
 const home = withBase('/');
+const year = new Date().getFullYear();
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => {
@@ -13,7 +14,7 @@ const isActive = (href: string) => {
 
 <header class="site-header">
   <div class="header-inner">
-    <a href={home} class="site-name">{siteConfig.name}</a>
+    <a href={home} class="site-name">&copy; {year}, {siteConfig.name}</a>
     <nav class="site-nav work-nav" aria-label="Work navigation">
       <ul role="list">
         {siteConfig.nav.work.map(link => (
@@ -51,6 +52,7 @@ const isActive = (href: string) => {
     font-size: 1rem;
     color: var(--color-text);
     justify-self: start;
+    text-transform: uppercase;
   }
 
   .work-nav {
