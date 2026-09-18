@@ -11,8 +11,13 @@ import { siteConfig } from '@config/site';
 </BaseLayout>
 
 <style>
+  :global(main) {
+    display: flex;
+    flex-direction: column;
+  }
+
   .hero {
-    height: 100%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
