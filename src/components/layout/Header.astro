@@ -31,16 +31,20 @@ const isActive = (href: string) => {
     ) : (
       <a href={home} class="site-name">&copy; {year}, {siteConfig.name}</a>
     )}
-    <nav class="site-nav work-nav" aria-label="Work navigation">
-      <ul role="list">
-        {siteConfig.nav.work.map(link => (
-          <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
-        ))}
-      </ul>
-    </nav>
+    {!backHref && (
+      <nav class="site-nav work-nav" aria-label="Work navigation">
+        <ul role="list">
+          {siteConfig.nav.work.map(link => (
+            <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
     {backHref ? (
       <nav class="site-nav back-nav" aria-label="Back navigation">
-        <a href={withBase(backHref)} data-back>BACK</a>
+        <ul role="list">
+          <li><a href={withBase(backHref)} data-back>BACK</a></li>
+        </ul>
       </nav>
     ) : (
       <nav class="site-nav pages-nav" aria-label="Pages navigation">
