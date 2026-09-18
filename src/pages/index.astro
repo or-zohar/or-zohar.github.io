@@ -1,17 +1,20 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Gallery from '@components/home/Gallery.astro';
-import PagesNav from '@components/layout/PagesNav.astro';
 import { siteConfig } from '@config/site';
 ---
 
 <BaseLayout title={siteConfig.title} description={siteConfig.description}>
-  <Gallery />
-  <PagesNav />
+  <div class="hero">
+    <Gallery />
+  </div>
 </BaseLayout>
 
 <style>
-  main {
-    padding-bottom: var(--space-2xl);
+  .hero {
+    min-height: calc(100dvh - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>

@@ -28,6 +28,8 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
       data-active={i === 0}
     />
   ))}
+  <button type="button" class="gallery-zone gallery-prev" aria-label="Previous image"></button>
+  <button type="button" class="gallery-zone gallery-next" aria-label="Next image"></button>
 </div>
 
 <style>
@@ -52,6 +54,26 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
   .gallery-image[data-active="true"] {
     opacity: 1;
   }
+
+  .gallery-zone {
+    position: absolute;
+    inset: 0;
+    width: 50%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .gallery-prev {
+    left: 0;
+    cursor: w-resize;
+  }
+
+  .gallery-next {
+    left: 50%;
+    cursor: e-resize;
+  }
 </style>
 
 <script>
@@ -62,10 +84,29 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
     if (images.length < 2) return;
 
     let current = 0;
-    setInterval(() => {
+    let timer: ReturnType<typeof setInterval>;
+
+    const show = (index: number) => {
       images[current].dataset.active = 'false';
-      current = (current + 1) % images.length;
+      current = (index + images.length) % images.length;
       images[current].dataset.active = 'true';
-    }, 4000);
+    };
+
+    const restart = () => {
+      clearInterval(timer);
+      timer = setInterval(() => show(current + 1), 4000);
+    };
+
+    gallery.querySelector('.gallery-prev')?.addEventListener('click', () => {
+      show(current - 1);
+      restart();
+    });
+
+    gallery.querySelector('.gallery-next')?.addEventListener('click', () => {
+      show(current + 1);
+      restart();
+    });
+
+    restart();
   });
 </script>
