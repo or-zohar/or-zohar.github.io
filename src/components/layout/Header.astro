@@ -81,8 +81,16 @@ const isActive = (href: string) => {
     text-transform: uppercase;
   }
 
+  .header-inner {
+    position: relative;
+  }
+
   .project-id {
-    justify-self: start;
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-lg);
+    width: calc(100% / 3 - var(--space-lg));
+    z-index: 1;
   }
 
   .project-title,
@@ -134,6 +142,11 @@ const isActive = (href: string) => {
     .back-nav {
       grid-column: auto;
       justify-self: center;
+    }
+
+    .project-id {
+      position: static;
+      width: auto;
     }
 
     .site-nav ul {
