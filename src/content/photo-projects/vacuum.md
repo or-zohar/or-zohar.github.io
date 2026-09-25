@@ -5,6 +5,7 @@ tags: []
 cover: "../../assets/photo-projects/vacuum/vacuum-cover.jpg"
 hideCoverOnDetail: true
 featured: true
+section: "direction"
 order: 1
 ---
 

@@ -5,6 +5,7 @@ tags: []
 cover: "../../assets/photo-projects/afterglow/afterglow-cover.jpg"
 hideCoverOnDetail: true
 featured: true
+section: "direction"
 order: 1.3
 ---
 
