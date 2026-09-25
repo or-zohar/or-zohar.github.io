@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { siteConfig } from '@config/site';
 ---
 
-<BaseLayout title={`Info — ${siteConfig.name}`} description={`About and contact — ${siteConfig.name}`}>
+<BaseLayout title={`Info — ${siteConfig.name}`} description={`About and contact — ${siteConfig.name}`} backHref="/">
   <section class="info">
     <p class="info-text">
       Hello! I am a photographer and visual communication student at
@@ -30,9 +30,9 @@ import { siteConfig } from '@config/site';
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: left;
-    padding: var(--space-lg) var(--space-lg) var(--space-2xl);
+    padding: 0 var(--space-lg) var(--space-2xl);
   }
 
   .info-text {
