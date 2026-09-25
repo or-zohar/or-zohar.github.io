@@ -44,6 +44,10 @@ const { projects, basePath, heading, id } = Astro.props;
     scroll-margin-top: 3.6rem;
   }
 
+  .project-section:first-of-type {
+    padding-top: 0;
+  }
+
   .project-section + .project-section {
     padding-top: var(--space-xl);
   }
@@ -92,6 +96,10 @@ const { projects, basePath, heading, id } = Astro.props;
     .project-section {
       --thumb-height: 130px;
       padding-inline: var(--space-md);
+    }
+
+    .project-section:first-of-type {
+      padding-top: 0;
     }
 
     .project-grid {
