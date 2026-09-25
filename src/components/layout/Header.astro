@@ -78,7 +78,7 @@ const isActive = (href: string) => {
 
   .project-title,
   .project-description {
-    font-size: 0.75rem;
+    font-size: 14px;
     color: var(--color-text);
     margin: 0;
   }
@@ -94,7 +94,7 @@ const isActive = (href: string) => {
 
   .site-nav ul {
     display: flex;
-    gap: var(--space-lg);
+    gap: calc(var(--space-lg) * 0.7);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -125,16 +125,11 @@ const isActive = (href: string) => {
     .site-nav ul {
       justify-content: center;
       flex-wrap: wrap;
-      gap: var(--space-md);
+      gap: calc(var(--space-md) * 0.7);
     }
 
     .site-name {
       font-size: 0.875rem;
-    }
-
-    .project-title,
-    .project-description {
-      font-size: 0.65625rem;
     }
   }
 </style>
