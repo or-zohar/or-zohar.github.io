@@ -88,6 +88,10 @@ const isActive = (href: string) => {
     margin-top: var(--space-sm);
   }
 
+  .site-nav {
+    margin-left: auto;
+  }
+
   .site-nav ul {
     display: flex;
     gap: var(--space-lg);
@@ -114,8 +118,13 @@ const isActive = (href: string) => {
       width: auto;
     }
 
+    .site-nav {
+      margin-left: 0;
+    }
+
     .site-nav ul {
       justify-content: center;
+      flex-wrap: wrap;
       gap: var(--space-md);
     }
 
