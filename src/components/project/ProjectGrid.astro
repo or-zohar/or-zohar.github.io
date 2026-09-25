@@ -70,7 +70,7 @@ const { projects, basePath, heading, id } = Astro.props;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: calc(var(--space-xl) * 2) calc(var(--space-lg) * 2);
+    gap: var(--space-xl) calc(var(--space-lg) * 2);
     align-items: flex-start;
   }
 
@@ -103,7 +103,7 @@ const { projects, basePath, heading, id } = Astro.props;
     }
 
     .project-grid {
-      gap: calc(var(--space-lg) * 2) calc(var(--space-md) * 2);
+      gap: var(--space-lg) calc(var(--space-md) * 2);
     }
   }
 </style>
