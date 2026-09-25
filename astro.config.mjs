@@ -5,6 +5,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://or-zohar.github.io',
   integrations: [sitemap()],
+  redirects: {
+    '/about': '/info',
+    '/contact': '/info',
+  },
   vite: {
     plugins: [tailwindcss()],
   },

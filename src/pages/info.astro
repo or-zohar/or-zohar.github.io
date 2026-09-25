@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteConfig } from '@config/site';
+import aboutPhoto from '@assets/about/about-photo.jpg';
+---
+
+<BaseLayout title={`Info — ${siteConfig.name}`} description={`About and contact — ${siteConfig.name}`}>
+  <section class="info">
+    <p class="info-text">
+      Hello! I am a photographer and visual communication student at
+      Bezalel Academy of Arts and Design, with a strong affinity for
+      culture and arts. I am Focused on typography, print design,
+      branding and art direction.
+    </p>
+    <Image src={aboutPhoto} alt="" widths={[200, 400]} sizes="200px" class="info-photo" />
+    <ul class="contact-list" role="list">
+      {siteConfig.social.map(link => (
+        <li><a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">{link.label}</a></li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  :global(main) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-lg) var(--space-lg) var(--space-2xl);
+  }
+
+  .info-text {
+    max-width: 50ch;
+  }
+
+  .info-photo {
+    display: block;
+    width: 200px;
+    margin: var(--space-xl) auto var(--space-lg);
+  }
+
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-list li {
+    line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .info {
+      padding-inline: 24px;
+    }
+
+    .info-text {
+      max-width: 40ch;
+    }
+
+    .info-photo {
+      width: 144px;
+      margin-block: 30px var(--space-md);
+    }
+  }
+</style>
