@@ -6,38 +6,64 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
   projects: CollectionEntry<'photo-projects'>[] | CollectionEntry<'design-projects'>[];
   basePath: string;
+  heading: string;
+  id: string;
 }
 
-const { projects, basePath } = Astro.props;
+const { projects, basePath, heading, id } = Astro.props;
 ---
 
-<ul class="project-grid" role="list">
-  {projects.map((project, i) => (
-    <li>
-      <a
-        href={project.data.externalUrl || withBase(`${basePath}/${project.slug}`)}
-        aria-label={project.data.title}
-      >
-        <Image
-          src={project.data.cover}
-          alt=""
-          widths={[300, 600, 900]}
-          sizes="(max-width: 640px) 60vw, 400px"
-          quality={100}
-          loading={i < 6 ? 'eager' : 'lazy'}
-        />
-        <span class="project-number">{String(i + 1).padStart(2, '0')}</span>
-      </a>
-    </li>
-  ))}
-</ul>
+<section class="project-section" id={id}>
+  <h2 class="section-heading">{heading}</h2>
+  <ul class="project-grid" role="list">
+    {projects.map((project, i) => (
+      <li>
+        <a
+          href={project.data.externalUrl || withBase(`${basePath}/${project.slug}`)}
+          aria-label={project.data.title}
+        >
+          <Image
+            src={project.data.cover}
+            alt=""
+            widths={[300, 600, 900]}
+            sizes="(max-width: 640px) 60vw, 400px"
+            quality={100}
+            loading={i < 6 ? 'eager' : 'lazy'}
+          />
+          <span class="project-number">{String(i + 1).padStart(2, '0')}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
 
 <style>
-  .project-grid {
+  .project-section {
     --thumb-height: 200px;
+    padding: var(--space-lg) var(--space-lg) 0;
+    scroll-margin-top: 3.6rem;
+  }
+
+  .project-section + .project-section {
+    padding-top: var(--space-xl);
+  }
+
+  .project-section:last-of-type {
+    padding-bottom: var(--space-2xl);
+  }
+
+  .section-heading {
+    margin: 0 0 var(--space-lg);
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  .project-grid {
     list-style: none;
     margin: 0;
-    padding: var(--space-lg) var(--space-lg) var(--space-2xl);
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-xl) var(--space-lg);
@@ -63,9 +89,12 @@ const { projects, basePath } = Astro.props;
   }
 
   @media (max-width: 640px) {
-    .project-grid {
+    .project-section {
       --thumb-height: 130px;
       padding-inline: var(--space-md);
+    }
+
+    .project-grid {
       gap: var(--space-lg) var(--space-md);
     }
   }

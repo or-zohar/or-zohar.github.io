@@ -11,8 +11,8 @@ export const siteConfig = {
   // Navigation, grouped to match the header layout (work links, then page links)
   nav: {
     work: [
-      { label: 'PHOTOGRAPHY', href: '/photo-projects' },
-      { label: 'DESIGN', href: '/design-projects' },
+      { label: 'PHOTOGRAPHY', href: '/photo-projects#photography' },
+      { label: 'DESIGN', href: '/design-projects#design' },
     ],
     pages: [
       { label: 'INFO', href: '/info' },

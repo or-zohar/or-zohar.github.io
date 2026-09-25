@@ -1,29 +1,9 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import ProjectGallery from '@components/project/ProjectGallery.astro';
-import { getCollection } from 'astro:content';
+import ProjectsOverview from '@components/project/ProjectsOverview.astro';
 import { siteConfig } from '@config/site';
-
-const projects = (await getCollection('photo-projects'))
-  .sort((a, b) => a.data.order - b.data.order || (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
 ---
 
-<BaseLayout title={`Photo Projects — ${siteConfig.name}`} description="Photography projects.">
-  <div class="hero">
-    <ProjectGallery projects={projects} basePath="/photo-projects" />
-  </div>
+<BaseLayout title={`Projects — ${siteConfig.name}`} description="Design and photography projects.">
+  <ProjectsOverview />
 </BaseLayout>
-
-<style>
-  :global(main) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-</style>

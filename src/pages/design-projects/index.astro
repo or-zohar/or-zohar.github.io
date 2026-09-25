@@ -1,13 +1,9 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import ProjectGrid from '@components/project/ProjectGrid.astro';
-import { getCollection } from 'astro:content';
+import ProjectsOverview from '@components/project/ProjectsOverview.astro';
 import { siteConfig } from '@config/site';
-
-const projects = (await getCollection('design-projects'))
-  .sort((a, b) => a.data.order - b.data.order || (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
 ---
 
-<BaseLayout title={`Design Projects — ${siteConfig.name}`} description="Graphic design projects.">
-  <ProjectGrid projects={projects} basePath="/design-projects" />
+<BaseLayout title={`Projects — ${siteConfig.name}`} description="Design and photography projects.">
+  <ProjectsOverview />
 </BaseLayout>

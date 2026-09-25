@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectGrid from './ProjectGrid.astro';
+
+const byOrder = (a: { data: { order: number; date?: Date } }, b: { data: { order: number; date?: Date } }) =>
+  a.data.order - b.data.order || (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0);
+
+const design = (await getCollection('design-projects')).sort(byOrder);
+const photo = (await getCollection('photo-projects')).sort(byOrder);
+---
+
+<ProjectGrid projects={design} basePath="/design-projects" heading="DESIGN" id="design" />
+<ProjectGrid projects={photo} basePath="/photo-projects" heading="PHOTOGRAPHY" id="photography" />
