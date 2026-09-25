@@ -70,12 +70,13 @@ const { projects, basePath, heading, id } = Astro.props;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xl) calc(var(--space-lg) * 2);
+    gap: 64px calc(var(--space-lg) * 2);
     align-items: flex-start;
   }
 
   .project-grid a {
     display: block;
+    position: relative;
   }
 
   .project-grid img {
@@ -85,7 +86,9 @@ const { projects, basePath, heading, id } = Astro.props;
   }
 
   .project-number {
-    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
     margin-top: var(--space-sm);
     font-size: 0.875rem;
     line-height: 1.2;
@@ -103,7 +106,7 @@ const { projects, basePath, heading, id } = Astro.props;
     }
 
     .project-grid {
-      gap: var(--space-lg) calc(var(--space-md) * 2);
+      gap: 64px calc(var(--space-md) * 2);
     }
   }
 </style>
