@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import { withBase } from '@utils/url';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  projects: CollectionEntry<'photo-projects'>[] | CollectionEntry<'design-projects'>[];
+  basePath: string;
+}
+
+const { projects, basePath } = Astro.props;
+---
+
+<ul class="project-grid" role="list">
+  {projects.map((project, i) => (
+    <li>
+      <a
+        href={project.data.externalUrl || withBase(`${basePath}/${project.slug}`)}
+        aria-label={project.data.title}
+      >
+        <Image
+          src={project.data.cover}
+          alt=""
+          widths={[300, 600, 900]}
+          sizes="(max-width: 640px) 60vw, 400px"
+          quality={100}
+          loading={i < 6 ? 'eager' : 'lazy'}
+        />
+        <span class="project-number">{String(i + 1).padStart(2, '0')}</span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .project-grid {
+    --thumb-height: 200px;
+    list-style: none;
+    margin: 0;
+    padding: var(--space-lg) var(--space-lg) var(--space-2xl);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xl) var(--space-lg);
+    align-items: flex-start;
+  }
+
+  .project-grid a {
+    display: block;
+  }
+
+  .project-grid img {
+    display: block;
+    height: var(--thumb-height);
+    width: auto;
+  }
+
+  .project-number {
+    display: block;
+    margin-top: var(--space-sm);
+    font-size: 0.875rem;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .project-grid {
+      --thumb-height: 130px;
+      padding-inline: var(--space-md);
+      gap: var(--space-lg) var(--space-md);
+    }
+  }
+</style>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import ProjectGallery from '@components/project/ProjectGallery.astro';
+import ProjectGrid from '@components/project/ProjectGrid.astro';
 import { getCollection } from 'astro:content';
 import { siteConfig } from '@config/site';
 
@@ -9,21 +9,5 @@ const projects = (await getCollection('design-projects'))
 ---
 
 <BaseLayout title={`Design Projects — ${siteConfig.name}`} description="Graphic design projects.">
-  <div class="hero">
-    <ProjectGallery projects={projects} basePath="/design-projects" />
-  </div>
+  <ProjectGrid projects={projects} basePath="/design-projects" />
 </BaseLayout>
-
-<style>
-  :global(main) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-</style>
