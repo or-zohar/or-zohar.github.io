@@ -11,3 +11,8 @@ const photo = (await getCollection('photo-projects')).sort(byOrder);
 
 <ProjectGrid projects={design} basePath="/design-projects" heading="DESIGN" id="design" />
 <ProjectGrid projects={photo} basePath="/photo-projects" heading="PHOTOGRAPHY" id="photography" />
+
+<script>
+  const target = location.hash ? document.getElementById(location.hash.slice(1)) : null;
+  target?.scrollIntoView();
+</script>
