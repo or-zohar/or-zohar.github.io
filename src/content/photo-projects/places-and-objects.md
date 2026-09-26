@@ -2,7 +2,7 @@
 title: "\"Places and Objects\""
 description: "Landscape and still-life photographs shot on film. A lasting connection to open spaces and natural materials."
 tags: []
-cover: "../../assets/photo-projects/places-and-objects/places-and-objects-12.jpg"
+cover: "../../assets/photo-projects/places-and-objects/places-and-objects-21.jpg"
 featured: true
 order: 0
 ---
@@ -45,7 +45,7 @@ order: 0
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-20.jpg)
 
-![](../../assets/photo-projects/places-and-objects/places-and-objects-21.jpg)
+![](../../assets/photo-projects/places-and-objects/places-and-objects-12.jpg)
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-22.jpg)
 
