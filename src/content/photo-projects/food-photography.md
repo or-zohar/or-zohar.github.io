@@ -4,7 +4,7 @@ description: "My path in photography began with a strong pull toward the kitchen
 tags: []
 cover: "../../assets/photo-projects/food-photography/food-photography-03.jpg"
 featured: true
-order: 2
+order: -0.5
 ---
 
 ![](../../assets/photo-projects/food-photography/food-photography-01.jpg)
