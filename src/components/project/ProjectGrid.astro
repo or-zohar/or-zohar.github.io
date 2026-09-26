@@ -8,12 +8,13 @@ interface Props {
   basePath: string;
   heading: string;
   id: string;
+  scale?: number;
 }
 
-const { projects, basePath, heading, id } = Astro.props;
+const { projects, basePath, heading, id, scale = 1 } = Astro.props;
 ---
 
-<section class="project-section" id={id}>
+<section class="project-section" id={id} style={`--thumb-scale: ${scale}`}>
   <h2 class="section-heading">{heading}</h2>
   <ul class="project-grid" role="list">
     {projects.map((project, i) => (
@@ -39,7 +40,7 @@ const { projects, basePath, heading, id } = Astro.props;
 
 <style>
   .project-section {
-    --thumb-height: 200px;
+    --thumb-height: calc(200px * var(--thumb-scale, 1));
     padding: var(--space-lg) var(--space-lg) calc(var(--space-sm) + 0.875rem * 1.2);
     scroll-margin-top: 3.6rem;
   }
@@ -97,7 +98,7 @@ const { projects, basePath, heading, id } = Astro.props;
 
   @media (max-width: 640px) {
     .project-section {
-      --thumb-height: 130px;
+      --thumb-height: calc(130px * var(--thumb-scale, 1));
       padding-inline: var(--space-md);
     }
 
