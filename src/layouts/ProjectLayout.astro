@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import ProjectMediaGallery from '@components/project/ProjectMediaGallery.astro';
+import ProjectIndex from '@components/project/ProjectIndex.astro';
 import type { Slide } from '@components/project/media';
 import type { CollectionEntry } from 'astro:content';
 
@@ -53,9 +54,10 @@ for (const m of matches) {
   projectDescription={description}
   backHref={basePath}
 >
-  <div class="hero">
+  <div class="hero" data-hero>
     <ProjectMediaGallery slides={slides} />
   </div>
+  <ProjectIndex slides={slides} />
 </BaseLayout>
 
 <style>
@@ -71,5 +73,9 @@ for (const m of matches) {
     justify-content: center;
     /* the sticky header takes space above; offset it so media is centred on the whole viewport */
     padding-bottom: var(--header-h, 3.6rem);
+  }
+
+  .hero[hidden] {
+    display: none;
   }
 </style>

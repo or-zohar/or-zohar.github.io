@@ -112,6 +112,7 @@ const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'vid
       items[current].dataset.active = 'true';
     };
 
+    gallery.addEventListener('gallery:goto', event => show((event as CustomEvent<number>).detail));
     gallery.querySelector('.gallery-prev')?.addEventListener('click', () => show(current - 1));
     gallery.querySelector('.gallery-next')?.addEventListener('click', () => show(current + 1));
   });

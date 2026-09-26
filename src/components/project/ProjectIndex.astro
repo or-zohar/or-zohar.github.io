@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+import type { Slide } from './media';
+
+interface Props {
+  slides: Slide[];
+}
+
+const { slides } = Astro.props;
+---
+
+<section class="index" data-index hidden aria-label="Project index">
+  <ul class="index-grid" role="list">
+    {slides.map((slide, i) => (
+      <li>
+        <button type="button" data-index-item={i} aria-label={`Show image ${i + 1}`}>
+          {slide.type === 'image' ? (
+            <Image
+              src={slide.src}
+              alt=""
+              widths={[300, 600, 900]}
+              sizes="(max-width: 640px) 60vw, 400px"
+              quality={100}
+              loading={i < 6 ? 'eager' : 'lazy'}
+            />
+          ) : (
+            <img src={slide.poster} alt="" loading={i < 6 ? 'eager' : 'lazy'} />
+          )}
+          <span class="index-number">{String(i + 1).padStart(2, '0')}</span>
+        </button>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .index {
+    --thumb-height: 200px;
+    padding: 10px var(--space-lg) calc(var(--space-2xl) + var(--space-sm) + 0.875rem * 1.2);
+  }
+
+  .index[hidden] {
+    display: none;
+  }
+
+  .index-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px calc(var(--space-lg) * 2);
+    align-items: flex-start;
+  }
+
+  .index-grid button {
+    position: relative;
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+  }
+
+  .index-grid img {
+    display: block;
+    height: var(--thumb-height);
+    width: auto;
+  }
+
+  .index-number {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: var(--space-sm);
+    font-size: 0.875rem;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .index {
+      --thumb-height: 130px;
+      padding-inline: var(--space-md);
+    }
+
+    .index-grid {
+      gap: 64px calc(var(--space-md) * 2);
+    }
+  }
+</style>
+
+<script>
+  const index = document.querySelector<HTMLElement>('[data-index]');
+  const hero = document.querySelector<HTMLElement>('[data-hero]');
+  const toggles = document.querySelectorAll<HTMLElement>('[data-index-toggle]');
+
+  if (index && hero) {
+    const setOpen = (open: boolean) => {
+      index.hidden = !open;
+      hero.hidden = open;
+      toggles.forEach(t => t.setAttribute('aria-pressed', String(open)));
+      document.documentElement.toggleAttribute('data-index-open', open);
+      if (open) {
+        // keep the grid clear of the (absolutely positioned) project description in the header
+        const header = document.querySelector<HTMLElement>('.site-header');
+        const id = document.querySelector<HTMLElement>('.project-id');
+        if (header && id) {
+          const below = id.getBoundingClientRect().bottom - header.getBoundingClientRect().bottom;
+          index.style.paddingTop = `${Math.max(10, below + 26)}px`;
+        }
+        window.scrollTo(0, 0);
+      }
+    };
+
+    toggles.forEach(toggle =>
+      toggle.addEventListener('click', event => {
+        event.preventDefault();
+        setOpen(index.hidden);
+      }),
+    );
+
+    index.querySelectorAll<HTMLElement>('[data-index-item]').forEach(item =>
+      item.addEventListener('click', () => {
+        setOpen(false);
+        document
+          .querySelector('[data-gallery]')
+          ?.dispatchEvent(new CustomEvent('gallery:goto', { detail: Number(item.dataset.indexItem) }));
+      }),
+    );
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !index.hidden) setOpen(false);
+    });
+  }
+</script>
