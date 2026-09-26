@@ -16,8 +16,8 @@ const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'vid
       <Image
         src={slide.src}
         alt={slide.alt}
-        widths={[400, 800, 1200]}
-        sizes="(max-width: 640px) 90vw, 600px"
+        widths={[400, 800, 1200, 1600]}
+        sizes="(max-width: 640px) 90vw, 720px"
         quality={100}
         loading={i === 0 ? 'eager' : 'lazy'}
         class="gallery-image"
@@ -47,7 +47,7 @@ const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'vid
   .gallery {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 720px;
     aspect-ratio: 4 / 3;
     margin-inline: auto;
   }
