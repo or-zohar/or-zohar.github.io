@@ -2,6 +2,8 @@
 // Homepage rotating gallery. Add more images to src/assets/gallery/
 // and list them here (in the order they should appear) to expand it.
 import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+import { withBase } from '@utils/url';
 import gallery1 from '@assets/gallery/gallery-1.jpg';
 import gallery2 from '@assets/gallery/gallery-2.jpg';
 import gallery3 from '@assets/gallery/gallery-3.jpg';
@@ -12,11 +14,37 @@ import gallery7 from '@assets/gallery/gallery-7.jpg';
 import gallery8 from '@assets/gallery/gallery-8.jpg';
 import gallery9 from '@assets/gallery/gallery-9.jpg';
 
-const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9];
+// Each photo links to the project it belongs to, opened on that same photo.
+// `asset` is the file name (without extension) of the photo inside the project.
+const entries = [
+  { src: gallery1, collection: 'photo-projects', slug: 'male-figures', asset: 'male-figures-01' },
+  { src: gallery2, collection: 'photo-projects', slug: 'female-figures', asset: 'female-figures-29' },
+  { src: gallery3, collection: 'design-projects', slug: 'deep-blue', asset: 'deep-blue-02' },
+  { src: gallery4, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-29' },
+  { src: gallery5, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-21' },
+  { src: gallery6, collection: 'design-projects', slug: 'memories-index', asset: 'memories-index-01' },
+  { src: gallery7, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-07' },
+  { src: gallery8, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-12' },
+  { src: gallery9, collection: 'photo-projects', slug: 'female-figures', asset: 'female-figures-01' },
+];
+
+// same slide order as the project page: cover (unless hidden), then the images in the body
+const images = await Promise.all(
+  entries.map(async ({ src, collection, slug, asset }) => {
+    const project = await getEntry(collection as 'photo-projects' | 'design-projects', slug);
+    const files = [
+      ...(project?.data.hideCoverOnDetail ? [] : [project?.data.cover.src ?? '']),
+      ...Array.from((project?.body ?? '').matchAll(/!\[[^\]]*\]\(([^)]+)\)/g), m => m[1]),
+    ];
+    const slide = files.findIndex(file => file.includes(`${asset}.`));
+    const query = slide > 0 ? `?image=${slide + 1}` : '';
+    return { src, href: withBase(`/${collection}/${slug}/${query}`) };
+  }),
+);
 ---
 
 <div class="gallery" data-gallery>
-  {images.map((src, i) => (
+  {images.map(({ src, href }, i) => (
     <Image
       src={src}
       alt=""
@@ -26,9 +54,11 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
       loading={i === 0 ? 'eager' : 'lazy'}
       class="gallery-image"
       data-active={i === 0}
+      data-href={href}
     />
   ))}
   <button type="button" class="gallery-zone gallery-prev" aria-label="Previous image"></button>
+  <a class="gallery-zone gallery-open" href={images[0].href} aria-label="Open project"></a>
   <button type="button" class="gallery-zone gallery-next" aria-label="Next image"></button>
 </div>
 
@@ -57,8 +87,9 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
 
   .gallery-zone {
     position: absolute;
-    inset: 0;
-    width: 50%;
+    top: 0;
+    bottom: 0;
+    width: 30%;
     border: none;
     background: transparent;
     padding: 0;
@@ -71,8 +102,13 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
   }
 
   .gallery-next {
-    left: 50%;
+    right: 0;
     cursor: e-resize;
+  }
+
+  .gallery-open {
+    left: 30%;
+    width: 40%;
   }
 </style>
 
@@ -83,6 +119,7 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
     const images = Array.from(gallery.querySelectorAll<HTMLElement>('.gallery-image'));
     if (images.length < 2) return;
 
+    const open = gallery.querySelector<HTMLAnchorElement>('.gallery-open');
     let current = 0;
     let timer: ReturnType<typeof setInterval>;
 
@@ -90,6 +127,7 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
       images[current].dataset.active = 'false';
       current = (index + images.length) % images.length;
       images[current].dataset.active = 'true';
+      if (open) open.href = images[current].dataset.href ?? open.href;
     };
 
     const restart = () => {

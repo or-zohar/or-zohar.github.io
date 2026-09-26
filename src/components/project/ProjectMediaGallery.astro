@@ -112,6 +112,15 @@ const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'vid
       items[current].dataset.active = 'true';
     };
 
+    // ?image=N opens the project on that image (used by the homepage), without the crossfade
+    const start = Number(new URLSearchParams(location.search).get('image')) - 1;
+    if (Number.isInteger(start) && start > 0 && start < items.length) {
+      items.forEach(item => (item.style.transition = 'none'));
+      show(start);
+      void gallery.offsetWidth;
+      items.forEach(item => item.style.removeProperty('transition'));
+    }
+
     gallery.addEventListener('gallery:goto', event => show((event as CustomEvent<number>).detail));
     gallery.querySelector('.gallery-prev')?.addEventListener('click', () => show(current - 1));
     gallery.querySelector('.gallery-next')?.addEventListener('click', () => show(current + 1));
