@@ -8,15 +8,14 @@ interface Props {
   basePath: string;
   heading: string;
   id: string;
-  justify?: boolean;
 }
 
-const { projects, basePath, heading, id, justify = false } = Astro.props;
+const { projects, basePath, heading, id } = Astro.props;
 ---
 
 <section class="project-section" id={id}>
   <h2 class="section-heading">{heading}</h2>
-  <ul class="project-grid" role="list" data-justify={justify ? "" : undefined}>
+  <ul class="project-grid" role="list">
     {projects.map((project, i) => (
       <li>
         <a
@@ -111,55 +110,3 @@ const { projects, basePath, heading, id, justify = false } = Astro.props;
     }
   }
 </style>
-
-<script>
-  // Stretch each row so its last project ends at the same margin the first one starts at.
-  const grids = document.querySelectorAll<HTMLElement>('[data-justify]');
-
-  const justify = (grid: HTMLElement) => {
-    const imgs = Array.from(grid.querySelectorAll<HTMLImageElement>('img'));
-    imgs.forEach(img => img.style.removeProperty('height'));
-
-    const style = getComputedStyle(grid);
-    const gap = parseFloat(style.columnGap) || 0;
-    const width = grid.clientWidth;
-    const base = imgs[0]?.getBoundingClientRect().height;
-    if (!base) return;
-
-    const aspects = imgs.map(img => Number(img.getAttribute('width')) / Number(img.getAttribute('height')));
-    if (aspects.some(a => !a)) return;
-
-    // same greedy row breaking the flex-wrap layout does at the base height
-    const rows: number[][] = [];
-    let row: number[] = [];
-    let used = 0;
-    aspects.forEach((aspect, i) => {
-      const w = aspect * base;
-      if (row.length && used + gap + w > width) {
-        rows.push(row);
-        row = [];
-        used = 0;
-      }
-      used += (row.length ? gap : 0) + w;
-      row.push(i);
-    });
-    if (row.length) rows.push(row);
-
-    rows.forEach((indexes, r) => {
-      const gaps = gap * (indexes.length - 1);
-      const natural = indexes.reduce((sum, i) => sum + aspects[i] * base, 0) + gaps;
-      const isPartialLast = r === rows.length - 1 && natural < width * 0.7;
-      if (isPartialLast) return;
-      const height = Math.floor(((width - gaps) / indexes.reduce((sum, i) => sum + aspects[i], 0)) * 100) / 100;
-      indexes.forEach(i => (imgs[i].style.height = `${height}px`));
-    });
-  };
-
-  const run = () => grids.forEach(justify);
-  run();
-  let timer: number | undefined;
-  window.addEventListener('resize', () => {
-    window.clearTimeout(timer);
-    timer = window.setTimeout(run, 100);
-  });
-</script>
