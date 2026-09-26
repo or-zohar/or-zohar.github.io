@@ -104,13 +104,6 @@ const { slides } = Astro.props;
       toggles.forEach(t => t.setAttribute('aria-pressed', String(open)));
       document.documentElement.toggleAttribute('data-index-open', open);
       if (open) {
-        // keep the grid clear of the (absolutely positioned) project description in the header
-        const header = document.querySelector<HTMLElement>('.site-header');
-        const id = document.querySelector<HTMLElement>('.project-id');
-        if (header && id) {
-          const below = id.getBoundingClientRect().bottom - header.getBoundingClientRect().bottom;
-          index.style.paddingTop = `${Math.max(10, below + 26)}px`;
-        }
         window.scrollTo(0, 0);
       }
     };
