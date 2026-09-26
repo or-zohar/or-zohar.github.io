@@ -10,9 +10,10 @@ interface Props {
   projectTitle?: string;
   projectDescription?: string;
   backHref?: string;
+  hideIndex?: boolean;
 }
 
-const { title, description, image, projectTitle, projectDescription, backHref } = Astro.props;
+const { title, description, image, projectTitle, projectDescription, backHref, hideIndex } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +22,7 @@ const { title, description, image, projectTitle, projectDescription, backHref } 
     <BaseHead {title} {description} {image} />
   </head>
   <body>
-    <Header {projectTitle} {projectDescription} {backHref} />
+    <Header {projectTitle} {projectDescription} {backHref} {hideIndex} />
     <main>
       <slot />
     </main>

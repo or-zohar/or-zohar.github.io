@@ -45,6 +45,7 @@ for (const m of matches) {
     slides.push({ type: 'video', src: m.src, poster: m.poster });
   }
 }
+const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'video');
 ---
 
 <BaseLayout
@@ -53,11 +54,12 @@ for (const m of matches) {
   projectTitle={title}
   projectDescription={description}
   backHref={basePath}
+  hideIndex={videoOnly}
 >
   <div class="hero" data-hero>
     <ProjectMediaGallery slides={slides} />
   </div>
-  <ProjectIndex slides={slides} />
+  {!videoOnly && <ProjectIndex slides={slides} />}
 </BaseLayout>
 
 <style>

@@ -6,9 +6,10 @@ interface Props {
   projectTitle?: string;
   projectDescription?: string;
   backHref?: string;
+  hideIndex?: boolean;
 }
 
-const { projectTitle, backHref } = Astro.props;
+const { projectTitle, backHref, hideIndex } = Astro.props;
 const projectDescription = Astro.props.projectDescription?.replaceAll('{mobile-break}', ' ');
 
 const home = withBase('/');
@@ -35,7 +36,7 @@ const isActive = (href: string) => {
       <ul role="list">
         {backHref ? (
           <>
-            {projectTitle && <li><a href="#index" data-index-toggle aria-pressed="false">INDEX</a></li>}
+            {projectTitle && !hideIndex && <li><a href="#index" data-index-toggle aria-pressed="false">INDEX</a></li>}
             <li><a href={withBase(backHref)} data-back>BACK</a></li>
           </>
         ) : (
