@@ -3,7 +3,7 @@ title: "PALACE hotel new logo"
 tags: []
 cover: "../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-01.jpg"
 featured: true
-order: 6
+order: 1
 ---
 
 ![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-02.jpg)

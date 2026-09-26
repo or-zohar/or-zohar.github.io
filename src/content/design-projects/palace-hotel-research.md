@@ -4,7 +4,7 @@ description: "Research into the background of the legendary Palace Hotel in Jeru
 tags: []
 cover: "../../assets/design-projects/palace-hotel-research/palace-hotel-research-01.jpg"
 featured: true
-order: 4
+order: 2
 ---
 
 ![](../../assets/design-projects/palace-hotel-research/palace-hotel-research-02.jpg)

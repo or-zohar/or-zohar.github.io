@@ -4,7 +4,7 @@ description: "A playful brochure guiding you through the steps of cooking rice."
 tags: []
 cover: "../../assets/design-projects/rice/rice-01.jpg"
 featured: true
-order: 1
+order: 6
 ---
 
 ![](../../assets/design-projects/rice/rice-02.jpg)

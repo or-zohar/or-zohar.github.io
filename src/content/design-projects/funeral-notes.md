@@ -4,7 +4,7 @@ description: "A zine of photographs taken during a family member's funeral, as a
 tags: []
 cover: "../../assets/design-projects/funeral-notes/funeral-notes-01.jpg"
 featured: true
-order: 2
+order: 4
 ---
 
 ![](../../assets/design-projects/funeral-notes/funeral-notes-02.jpg)

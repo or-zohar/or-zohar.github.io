@@ -1,6 +1,6 @@
 ---
 title: "A F T E R G L O W"
-description: "Nightlife burns bright and consumes just as fast. What's left after the high is a dependency dressed as freedom.\nDirected by me."
+description: "Nightlife burns bright and consumes just as fast. What's left after the high is a dependency dressed as freedom."
 tags: []
 cover: "../../assets/photo-projects/afterglow/afterglow-cover.jpg"
 hideCoverOnDetail: true

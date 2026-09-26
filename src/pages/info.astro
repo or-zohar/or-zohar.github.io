@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
 import { siteConfig } from '@config/site';
+import infoPhoto from '../assets/pages/info/info-photo.jpg';
 ---
 
 <BaseLayout title={`Info — ${siteConfig.name}`} description={`About and contact — ${siteConfig.name}`} backHref="/">
@@ -11,6 +13,7 @@ import { siteConfig } from '@config/site';
       culture and arts. I am Focused on typography, print design,
       branding and art direction.
     </p>
+    <Image class="info-photo" src={infoPhoto} alt="" widths={[280, 420]} sizes="140px" quality={100} />
     <ul class="contact-list" role="list">
       {siteConfig.social.map(link => (
         <li><a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">{link.label}</a></li>
@@ -39,6 +42,14 @@ import { siteConfig } from '@config/site';
     max-width: 50ch;
   }
 
+  .info-photo {
+    display: block;
+    align-self: flex-end;
+    width: 140px;
+    height: auto;
+    margin-top: calc(var(--space-md) + 10px);
+  }
+
   .contact-list {
     list-style: none;
     margin: calc(var(--space-md) + 10px) 0 0;
@@ -53,6 +64,10 @@ import { siteConfig } from '@config/site';
   }
 
   @media (max-width: 640px) {
+    .info-photo {
+      width: 110px;
+    }
+
     .info {
       padding-inline: 24px;
     }
