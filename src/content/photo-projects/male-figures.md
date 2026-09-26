@@ -1,6 +1,6 @@
 ---
 title: "MALE figures"
-description: "Portraits I've taken over the last seven years of family, friends, loves, and complete strangers, captured as special moments and emotions I was fortunate to witness. All shot on analog cameras, across various formats."
+description: "Seven years of portraits of the men I've loved, known, and met by chance. Shot on film, across various formats."
 tags: []
 cover: "../../assets/photo-projects/male-figures/male-figures-01.jpg"
 featured: true

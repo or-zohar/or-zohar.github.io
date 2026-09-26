@@ -1,6 +1,6 @@
 ---
 title: "FEMALE figures"
-description: "Portraits I've taken over the last seven years of family, friends, loves, and complete strangers, captured as special moments and emotions I was fortunate to witness. All shot on analog cameras, across various formats."
+description: "Portraits of the women in my life, taken over the last seven years. Each frame holds an emotion I was fortunate to capture. Shot on film, across various formats."
 tags: []
 cover: "../../assets/photo-projects/female-figures/female-figures-01.jpg"
 featured: true
