@@ -2,20 +2,27 @@
 import { getCollection } from 'astro:content';
 import ProjectGrid from './ProjectGrid.astro';
 
+interface Props {
+  page: 'design' | 'photography';
+}
+
+const { page } = Astro.props;
+
 const byOrder = (a: { data: { order: number; date?: Date } }, b: { data: { order: number; date?: Date } }) =>
   a.data.order - b.data.order || (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0);
 
-const design = (await getCollection('design-projects')).sort(byOrder);
-const photoAll = (await getCollection('photo-projects')).sort(byOrder);
+const design = page === 'design' ? (await getCollection('design-projects')).sort(byOrder) : [];
+const photoAll = page === 'photography' ? (await getCollection('photo-projects')).sort(byOrder) : [];
 const photo = photoAll.filter(p => p.data.section !== 'direction');
 const direction = photoAll.filter(p => p.data.section === 'direction');
 ---
 
-<ProjectGrid projects={design} basePath="/design-projects" heading="DESIGN" id="design" />
-<ProjectGrid projects={photo} basePath="/photo-projects" heading="PHOTOGRAPHY" id="photography" />
-<ProjectGrid projects={direction} basePath="/photo-projects" heading="DIRACTION" id="direction" />
-
-<script>
-  const target = location.hash ? document.getElementById(location.hash.slice(1)) : null;
-  target?.scrollIntoView();
-</script>
+{page === 'design' && (
+  <ProjectGrid projects={design} basePath="/design-projects" heading="DESIGN" id="design" />
+)}
+{page === 'photography' && (
+  <>
+    <ProjectGrid projects={photo} basePath="/photo-projects" heading="PHOTOGRAPHY" id="photography" />
+    <ProjectGrid projects={direction} basePath="/photo-projects" heading="DIRACTION" id="direction" />
+  </>
+)}
