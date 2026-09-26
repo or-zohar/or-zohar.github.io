@@ -63,6 +63,10 @@ import infoPhoto from '../assets/pages/info/info-photo.jpg';
     text-transform: uppercase;
   }
 
+  .contact-list :global(.email-reveal) {
+    text-transform: none;
+  }
+
   @media (max-width: 640px) {
     .info-photo {
       width: 110px;
@@ -77,3 +81,17 @@ import infoPhoto from '../assets/pages/info/info-photo.jpg';
     }
   }
 </style>
+
+<script>
+  // EMAIL reveals the address next to the button instead of opening the mail app
+  document.querySelectorAll<HTMLAnchorElement>('.contact-list a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      if (link.parentElement?.querySelector('.email-reveal')) return;
+      const reveal = document.createElement('span');
+      reveal.className = 'email-reveal';
+      reveal.textContent = ` - ${link.href.replace('mailto:', '')}`;
+      link.after(reveal);
+    });
+  });
+</script>
