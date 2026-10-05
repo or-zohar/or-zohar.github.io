@@ -68,3 +68,17 @@ order: 0
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-31.jpg)
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-32.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-33.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-34.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-35.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-36.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-37.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-38.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-39.jpg)
