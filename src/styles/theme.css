@@ -13,6 +13,9 @@
    glyph) instead of the regular lowercase glyph — see BaseLayout.astro */
 .x-cap {
   font-feature-settings: "smcp" 1;
+  /* the small-caps X glyph is still taller (564/1000 em) than the font's
+     x-height (~518/1000 em); scale it down to match the surrounding letters */
+  font-size: 0.919em;
 }
 
 /* ===== DESIGN TOKENS =====
