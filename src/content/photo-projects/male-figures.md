@@ -40,3 +40,23 @@ order: -2
 ![](../../assets/photo-projects/male-figures/male-figures-17.jpg)
 
 ![](../../assets/photo-projects/male-figures/male-figures-18.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-19.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-20.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-21.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-22.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-23.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-24.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-25.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-26.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-27.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-28.jpg)

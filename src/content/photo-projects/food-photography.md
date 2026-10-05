@@ -19,8 +19,6 @@ order: -0.5
 
 ![](../../assets/photo-projects/food-photography/food-photography-07.jpg)
 
-![](../../assets/photo-projects/food-photography/food-photography-08.jpg)
-
 ![](../../assets/photo-projects/food-photography/food-photography-09.jpg)
 
 ![](../../assets/photo-projects/food-photography/food-photography-10.jpg)
