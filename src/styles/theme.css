@@ -9,6 +9,12 @@
   font-display: swap;
 }
 
+/* Lowercase "x" is rendered with the font's small-caps X (a smaller capital-X
+   glyph) instead of the regular lowercase glyph — see BaseLayout.astro */
+.x-cap {
+  font-feature-settings: "smcp" 1;
+}
+
 /* ===== DESIGN TOKENS =====
    Minimal black-on-white design. Edit these to change the whole site. */
 
