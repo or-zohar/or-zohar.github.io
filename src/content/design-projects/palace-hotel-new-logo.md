@@ -1,5 +1,6 @@
 ---
 title: "PALACE hotel new logo"
+description: "A new logo for Jerusalem's historic Palace Hotel (est. 1929), with two posters for upcoming events, as part of a rebranding project."
 tags: []
 cover: "../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-01.jpg"
 featured: true
