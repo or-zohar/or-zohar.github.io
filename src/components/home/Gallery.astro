@@ -13,19 +13,27 @@ import gallery6 from '@assets/gallery/gallery-6.jpg';
 import gallery7 from '@assets/gallery/gallery-7.jpg';
 import gallery8 from '@assets/gallery/gallery-8.jpg';
 import gallery9 from '@assets/gallery/gallery-9.jpg';
+import gallery10 from '@assets/gallery/gallery-10.jpg';
+import gallery11 from '@assets/gallery/gallery-11.jpg';
+import gallery12 from '@assets/gallery/gallery-12.jpg';
 
 // Each photo links to the project it belongs to, opened on that same photo.
 // `asset` is the file name (without extension) of the photo inside the project.
+// The same photo may appear twice in the list (e.g. 10 and 12): list it once as a file, twice here.
 const entries = [
   { src: gallery1, collection: 'photo-projects', slug: 'male-figures', asset: 'male-figures-01' },
   { src: gallery2, collection: 'photo-projects', slug: 'female-figures', asset: 'female-figures-29' },
   { src: gallery3, collection: 'design-projects', slug: 'deep-blue', asset: 'deep-blue-02' },
-  { src: gallery4, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-29' },
-  { src: gallery5, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-21' },
-  { src: gallery6, collection: 'design-projects', slug: 'memories-index', asset: 'memories-index-01' },
-  { src: gallery7, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-07' },
-  { src: gallery8, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-12' },
-  { src: gallery9, collection: 'photo-projects', slug: 'female-figures', asset: 'female-figures-01' },
+  { src: gallery4, collection: 'design-projects', slug: 'palace-hotel-new-logo', asset: 'palace-hotel-new-logo-01' },
+  { src: gallery5, collection: 'design-projects', slug: 'palace-hotel-research', asset: 'palace-hotel-research-01' },
+  { src: gallery6, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-21' },
+  { src: gallery7, collection: 'photo-projects', slug: 'food-photography', asset: 'food-photography-03' },
+  { src: gallery8, collection: 'photo-projects', slug: 'food-photography', asset: 'food-photography-11' },
+  { src: gallery9, collection: 'design-projects', slug: 'memories-index', asset: 'memories-index-17' },
+  { src: gallery10, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-07' },
+  { src: gallery11, collection: 'design-projects', slug: 'photo-action', asset: 'photo-action-01' },
+  { src: gallery10, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-07' },
+  { src: gallery12, collection: 'design-projects', slug: 'honney-pacage-design', asset: 'honney-pacage-design-01' },
 ];
 
 // same slide order as the project page: cover (unless hidden), then the images in the body
