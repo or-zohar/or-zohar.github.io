@@ -1,6 +1,6 @@
 ---
 title: "PALACE hotel rebrand"
-description: "A new logo for Jerusalem's historic Palace Hotel (est. 1929), with two posters for upcoming events, as part of a rebranding project. The hotel was originally founded in an Arab design, and the rebrand aims to return to that original style while preserving the elements that remain from the historic building."
+description: "A new logo for Jerusalem's historic Palace Hotel (est. 1929), with two posters for upcoming events, as part of a rebranding project. The rebrand aims to return to that original style while preserving the elements that remain from the historic building."
 credit: "Guided by: Sharon Etgar. 2026"
 tags: []
 cover: "../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-01.jpg"
