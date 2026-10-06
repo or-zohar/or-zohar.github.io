@@ -18,11 +18,11 @@ const direction = photoAll.filter(p => p.data.section === 'direction');
 ---
 
 {page === 'design' && (
-  <ProjectGrid projects={design} basePath="/design-projects" heading="DESIGN" id="design" />
+  <ProjectGrid projects={design} basePath="/design-projects" heading="DESIGN" id="design" showHeading={false} />
 )}
 {page === 'photography' && (
   <>
-    <ProjectGrid projects={photo} basePath="/photo-projects" heading="PHOTOGRAPHY" id="photography" />
+    <ProjectGrid projects={photo} basePath="/photo-projects" heading="PHOTOGRAPHY" id="photography" showHeading={false} />
     <ProjectGrid projects={direction} basePath="/photo-projects" heading="DIRACTION" id="direction" />
   </>
 )}
