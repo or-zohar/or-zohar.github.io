@@ -4,6 +4,7 @@ const projectSchema = ({ image }: { image: () => z.ZodType }) =>
   z.object({
     title: z.string(),
     description: z.string().optional(),
+    credit: z.string().optional(),
     date: z.date().optional(),
     tags: z.array(z.string()),
     role: z.string().optional(),
