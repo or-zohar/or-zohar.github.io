@@ -25,3 +25,5 @@ order: 2
 ![](../../assets/design-projects/palace-hotel-research/palace-hotel-research-09.jpg)
 
 ![](../../assets/design-projects/palace-hotel-research/palace-hotel-research-10.jpg)
+
+![](../../assets/design-projects/palace-hotel-research/palace-hotel-research-11.jpg)
