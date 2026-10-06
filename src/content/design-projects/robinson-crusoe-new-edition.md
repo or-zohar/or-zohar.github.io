@@ -1,7 +1,7 @@
 ---
 title: "Robinson Crusoe new Edition"
 description: "A new Hebrew-edition cover and inside pages design for Daniel Defoe's \"Robinson Crusoe.\""
-credit: "Guided by: Sonja Olitsky"
+credit: "Guided by: Sonja Olitsky. 2026"
 tags: []
 cover: "../../assets/design-projects/robinson-crusoe-new-edition/robinson-crusoe-new-edition-01.jpg"
 featured: true
