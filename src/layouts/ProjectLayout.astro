@@ -53,6 +53,7 @@ const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'vid
   description={description}
   projectTitle={title}
   projectDescription={description}
+  projectCredit={credit}
   backHref={basePath}
   hideIndex={videoOnly}
 >
@@ -60,14 +61,9 @@ const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'vid
     <ProjectMediaGallery slides={slides} />
   </div>
   {!videoOnly && <ProjectIndex slides={slides} />}
-  {credit && <p class="credit">{credit}</p>}
 </BaseLayout>
 
 <style>
-  :global(body) {
-    position: relative;
-  }
-
   :global(main) {
     display: flex;
     flex-direction: column;
@@ -84,23 +80,5 @@ const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'vid
 
   .hero[hidden] {
     display: none;
-  }
-
-  /* credit line: the bottom-left corner of the page */
-  .credit {
-    position: absolute;
-    left: var(--space-lg);
-    bottom: var(--space-md);
-    margin: 0;
-    font-size: 16px;
-    color: var(--color-text);
-    opacity: 0.6;
-    pointer-events: none;
-  }
-
-  @media (max-width: 640px) {
-    .credit {
-      left: var(--space-md);
-    }
   }
 </style>

@@ -5,11 +5,12 @@ import { withBase } from '@utils/url';
 interface Props {
   projectTitle?: string;
   projectDescription?: string;
+  projectCredit?: string;
   backHref?: string;
   hideIndex?: boolean;
 }
 
-const { projectTitle, backHref, hideIndex } = Astro.props;
+const { projectTitle, projectCredit, backHref, hideIndex } = Astro.props;
 const projectDescription = Astro.props.projectDescription?.replaceAll('{mobile-break}', ' ');
 
 const home = withBase('/');
@@ -28,6 +29,7 @@ const isActive = (href: string) => {
       <div class="project-id">
         <p class="project-title">{projectTitle}</p>
         {projectDescription && <p class="project-description">{projectDescription}</p>}
+        {projectCredit && <p class="project-credit">{projectCredit}</p>}
       </div>
     ) : (
       <a href={home} class="site-name">&copy; {year}, {siteConfig.name}</a>
@@ -81,18 +83,26 @@ const isActive = (href: string) => {
   }
 
   .project-title,
-  .project-description {
+  .project-description,
+  .project-credit {
     font-size: 16px;
     color: var(--color-text);
     margin: 0;
   }
 
-  :global(html[data-index-open]) .project-description {
+  :global(html[data-index-open]) .project-description,
+  :global(html[data-index-open]) .project-credit {
     display: none;
   }
 
   .project-description {
     white-space: pre-line;
+    opacity: 0.6;
+    margin-top: var(--space-md);
+  }
+
+  /* same gap under the description as between the title and the description */
+  .project-credit {
     opacity: 0.6;
     margin-top: var(--space-md);
   }
