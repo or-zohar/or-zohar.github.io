@@ -1,6 +1,7 @@
 ---
 title: "\"rice.\""
 description: "A playful brochure guiding you through the steps of cooking rice."
+credit: "Guided by: Dan Ozeri. 2026"
 tags: []
 cover: "../../assets/design-projects/rice/rice-01.jpg"
 featured: true
