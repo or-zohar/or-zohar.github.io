@@ -5,7 +5,7 @@ credit: "Guided by: Dan Ozeri. 2026"
 tags: []
 cover: "../../assets/design-projects/rice/rice-01.jpg"
 featured: true
-order: 6
+order: 3
 ---
 
 ![](../../assets/design-projects/rice/rice-02.jpg)

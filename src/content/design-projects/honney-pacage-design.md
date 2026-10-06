@@ -5,7 +5,7 @@ credit: "Guided by: Sonja Olitsky. 2026"
 tags: []
 cover: "../../assets/design-projects/honney-pacage-design/honney-pacage-design-01.jpg"
 featured: true
-order: 3
+order: 6
 ---
 
 ![](../../assets/design-projects/honney-pacage-design/honney-pacage-design-02.jpg)
