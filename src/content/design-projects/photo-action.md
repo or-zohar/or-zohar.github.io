@@ -1,6 +1,6 @@
 ---
 title: "\"PHOTO. ACTION.\""
-description: "Poster and program design for \"Photo. Action.\", an exhibition by Bezalel's Photography Department in collaboration with the Ministry of Education."
+description: "Poster and program design for an exhibition by Bezalel's Photography Department in collaboration with the Ministry of Education."
 credit: "Guided by: Sonja Olitsky. 2026"
 tags: []
 cover: "../../assets/design-projects/photo-action/photo-action-03.jpg"
