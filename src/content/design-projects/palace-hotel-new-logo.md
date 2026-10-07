@@ -8,6 +8,10 @@ featured: true
 order: 3
 ---
 
+![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-08.jpg)
+
+![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-09.jpg)
+
 ![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-02.jpg)
 
 ![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-03.jpg)
@@ -19,7 +23,3 @@ order: 3
 ![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-06.jpg)
 
 ![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-07.jpg)
-
-![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-08.jpg)
-
-![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-09.jpg)
