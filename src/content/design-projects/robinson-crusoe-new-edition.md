@@ -5,7 +5,7 @@ credit: "Guided by: Sonja Olitsky. 2026"
 tags: []
 cover: "../../assets/design-projects/robinson-crusoe-new-edition/robinson-crusoe-new-edition-01.jpg"
 featured: true
-order: 7
+order: 8
 ---
 
 ![](../../assets/design-projects/robinson-crusoe-new-edition/robinson-crusoe-new-edition-02.jpg)

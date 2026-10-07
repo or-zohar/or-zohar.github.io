@@ -5,7 +5,7 @@ credit: "Guided by: Noya Antman Ron. 2025"
 tags: []
 cover: "../../assets/design-projects/memories-index/memories-index-01.jpg"
 featured: true
-order: 0
+order: 2
 ---
 
 ![](../../assets/design-projects/memories-index/memories-index-02.jpg)

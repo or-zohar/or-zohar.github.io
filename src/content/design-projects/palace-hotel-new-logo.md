@@ -5,7 +5,7 @@ credit: "Guided by: Sharon Etgar. 2026"
 tags: []
 cover: "../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-01.jpg"
 featured: true
-order: 1
+order: 3
 ---
 
 ![](../../assets/design-projects/palace-hotel-new-logo/palace-hotel-new-logo-02.jpg)

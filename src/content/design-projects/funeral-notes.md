@@ -5,7 +5,7 @@ credit: "Guided by: Keren Zaltz. 2026"
 tags: []
 cover: "../../assets/design-projects/funeral-notes/funeral-notes-01.jpg"
 featured: true
-order: 4
+order: 10
 ---
 
 ![](../../assets/design-projects/funeral-notes/funeral-notes-02.jpg)

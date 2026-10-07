@@ -5,7 +5,7 @@ credit: "Guided by: Sharon Etgar. 2026"
 tags: []
 cover: "../../assets/design-projects/palace-hotel-research/palace-hotel-research-01.jpg"
 featured: true
-order: 2
+order: 4
 ---
 
 ![](../../assets/design-projects/palace-hotel-research/palace-hotel-research-02.jpg)

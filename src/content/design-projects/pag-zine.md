@@ -4,7 +4,7 @@ description: "A xerox zine made from photographs I took in the performers' room 
 tags: []
 cover: "../../assets/design-projects/pag-zine/pag-zine-01.jpg"
 featured: true
-order: 5
+order: 9
 ---
 
 ![](../../assets/design-projects/pag-zine/pag-zine-02.jpg)
