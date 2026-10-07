@@ -137,17 +137,13 @@ const rows = Array.from({ length: Math.ceil(projects.length / PER_ROW) }, (_, r)
   }
 
   @media (max-width: 640px) {
-    /* three images per row, edge to edge; row heights differ with the images' proportions */
+    /* three images per row across the screen; row heights differ with the images' proportions */
     .project-section {
-      padding-inline: 0;
+      padding-inline: var(--space-md);
     }
 
     .project-section:first-of-type {
       padding-top: 10px;
-    }
-
-    .section-heading {
-      padding-inline: var(--space-md);
     }
 
     .project-grid {
@@ -157,7 +153,7 @@ const rows = Array.from({ length: Math.ceil(projects.length / PER_ROW) }, (_, r)
     .grid-row {
       display: flex;
       gap: var(--space-sm);
-      margin-bottom: 64px;
+      margin-bottom: 36px;
     }
 
     .grid-row:last-child {
