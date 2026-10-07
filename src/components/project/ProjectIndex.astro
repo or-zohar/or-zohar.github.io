@@ -103,9 +103,9 @@ const rows = Array.from({ length: Math.ceil(slides.length / PER_ROW) }, (_, r) =
   }
 
   @media (max-width: 640px) {
-    /* three images per row, edge to edge; row heights differ with the images' proportions */
+    /* three images per row across the screen; row heights differ with the images' proportions */
     .index {
-      padding-inline: 0;
+      padding-inline: var(--space-md);
     }
 
     .index-grid {
@@ -115,7 +115,7 @@ const rows = Array.from({ length: Math.ceil(slides.length / PER_ROW) }, (_, r) =
     .grid-row {
       display: flex;
       gap: var(--space-sm);
-      margin-bottom: 64px;
+      margin-bottom: 36px;
     }
 
     .grid-row:last-child {
