@@ -12,30 +12,50 @@ interface Props {
 }
 
 const { projects, basePath, heading, id, showHeading = true } = Astro.props;
+
+// Phone layout: rows of three that fill the screen edge to edge (row height follows the
+// images' proportions). On wider screens the rows are transparent (display: contents).
+const PER_ROW = 3;
+const aspectOf = (project: (typeof projects)[number]) => {
+  const cover = project.data.cover as ImageMetadata;
+  return cover.width / cover.height;
+};
+const aspects = projects.map(aspectOf);
+const average = aspects.reduce((sum, a) => sum + a, 0) / Math.max(aspects.length, 1);
+const rows = Array.from({ length: Math.ceil(projects.length / PER_ROW) }, (_, r) =>
+  projects.slice(r * PER_ROW, r * PER_ROW + PER_ROW).map((project, j) => ({ project, i: r * PER_ROW + j })),
+);
 ---
 
 <section class="project-section" id={id}>
   <h2 class={showHeading ? 'section-heading' : 'sr-only'}>{heading}</h2>
-  <ul class="project-grid" role="list">
-    {projects.map((project, i) => (
-      <li>
-        <a
-          href={project.data.externalUrl || withBase(`${basePath}/${project.slug}`)}
-          aria-label={project.data.title}
-        >
-          <Image
-            src={project.data.cover}
-            alt=""
-            widths={[300, 600, 900]}
-            sizes="(max-width: 640px) 60vw, 400px"
-            quality={100}
-            loading={i < 6 ? 'eager' : 'lazy'}
-          />
-          <span class="project-number">{String(i + 1).padStart(2, '0')}</span>
-        </a>
-      </li>
+  <div class="project-grid" role="list">
+    {rows.map(row => (
+      <div class="grid-row" role="presentation">
+        {row.map(({ project, i }) => (
+          <div class="grid-item" role="listitem" style={`--a: ${aspects[i]}`}>
+            <a
+              href={project.data.externalUrl || withBase(`${basePath}/${project.slug}`)}
+              aria-label={project.data.title}
+            >
+              <Image
+                src={project.data.cover}
+                alt=""
+                widths={[300, 600, 900]}
+                sizes="(max-width: 640px) 34vw, 400px"
+                quality={100}
+                loading={i < 6 ? 'eager' : 'lazy'}
+              />
+              <span class="project-number">{String(i + 1).padStart(2, '0')}</span>
+            </a>
+          </div>
+        ))}
+        {Array.from({ length: PER_ROW - row.length }, () => (
+          <div class="grid-filler" aria-hidden="true" style={`--a: ${average}`}></div>
+        ))}
+      </div>
     ))}
-  </ul>
+  </div>
 </section>
 
 <style>
@@ -79,13 +99,20 @@ const { projects, basePath, heading, id, showHeading = true } = Astro.props;
   }
 
   .project-grid {
-    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 64px calc(var(--space-lg) * 2);
     align-items: flex-start;
+  }
+
+  .grid-row {
+    display: contents;
+  }
+
+  .grid-filler {
+    display: none;
   }
 
   .project-grid a {
@@ -110,17 +137,46 @@ const { projects, basePath, heading, id, showHeading = true } = Astro.props;
   }
 
   @media (max-width: 640px) {
+    /* three images per row, edge to edge; row heights differ with the images' proportions */
     .project-section {
-      --thumb-height: 140px;
-      padding-inline: var(--space-md);
+      padding-inline: 0;
     }
 
     .project-section:first-of-type {
       padding-top: 10px;
     }
 
+    .section-heading {
+      padding-inline: var(--space-md);
+    }
+
     .project-grid {
-      gap: 64px calc(var(--space-md) * 2);
+      display: block;
+    }
+
+    .grid-row {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: 64px;
+    }
+
+    .grid-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .grid-item,
+    .grid-filler {
+      flex: var(--a) 1 0;
+      min-width: 0;
+    }
+
+    .grid-filler {
+      display: block;
+    }
+
+    .project-grid img {
+      width: 100%;
+      height: auto;
     }
   }
 </style>
