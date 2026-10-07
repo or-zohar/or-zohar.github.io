@@ -1,6 +1,7 @@
 ---
 title: "FEMALE figures"
 description: "Portraits of the women in my life, taken over the last seven years. This series is about the bonds, the closeness and the distance between us. Shot on film, across various formats."
+credit: "2025"
 tags: []
 cover: "../../assets/photo-projects/female-figures/female-figures-01.jpg"
 featured: true

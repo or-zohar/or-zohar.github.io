@@ -1,6 +1,7 @@
 ---
 title: "V A C U U M"
 description: "A vacuum is a space without matter. Theoretically, it suggests isolation,\nyet it cannot truly exist — the outside world always presses in."
+credit: "2025"
 tags: []
 cover: "../../assets/photo-projects/vacuum/vacuum-cover.jpg"
 hideCoverOnDetail: true

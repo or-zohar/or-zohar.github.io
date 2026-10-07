@@ -1,6 +1,7 @@
 ---
 title: "MALE figures"
 description: "Seven years of portraits of the men I've loved, known, and met by chance. This series explores masculinity and my personal feelings toward it. Shot on film, across various formats."
+credit: "2025"
 tags: []
 cover: "../../assets/photo-projects/male-figures/male-figures-01.jpg"
 featured: true
