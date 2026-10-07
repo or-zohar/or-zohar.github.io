@@ -1,10 +1,12 @@
 ---
 title: "M O N O T O N Y"
-description: "The daily grind wears thin, boredom settling into every repeated hour, yet small moments of happiness still slip through the cracks.\nDirected by me."
+description: "The daily grind wears thin, boredom settling into every repeated hour,\nyet small moments of happiness still slip through the cracks."
+credit: "2022"
 tags: []
 cover: "../../assets/photo-projects/monotony/monotony-cover.jpg"
 hideCoverOnDetail: true
 featured: true
+section: "direction"
 order: 1.6
 ---
 

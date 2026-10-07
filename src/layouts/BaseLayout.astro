@@ -7,9 +7,14 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  projectTitle?: string;
+  projectDescription?: string;
+  projectCredit?: string;
+  backHref?: string;
+  hideIndex?: boolean;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, projectTitle, projectDescription, projectCredit, backHref, hideIndex } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,9 +23,44 @@ const { title, description, image } = Astro.props;
     <BaseHead {title} {description} {image} />
   </head>
   <body>
-    <Header />
+    <Header {projectTitle} {projectDescription} {projectCredit} {backHref} {hideIndex} />
     <main>
       <slot />
     </main>
+    <script>
+      // Render every lowercase "x" using the font's small-caps X glyph
+      // (a capital-X shape sized for lowercase text) instead of the regular x.
+      const wrapLowercaseX = (root: ParentNode) => {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode(node) {
+            const parent = (node as Text).parentElement;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (parent.closest('script, style, .x-cap')) return NodeFilter.FILTER_REJECT;
+            return node.nodeValue?.includes('x') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+          },
+        });
+
+        const nodes: Text[] = [];
+        let node: Node | null;
+        while ((node = walker.nextNode())) nodes.push(node as Text);
+
+        nodes.forEach(textNode => {
+          const parts = textNode.nodeValue!.split('x');
+          const frag = document.createDocumentFragment();
+          parts.forEach((part, i) => {
+            if (part) frag.appendChild(document.createTextNode(part));
+            if (i < parts.length - 1) {
+              const span = document.createElement('span');
+              span.className = 'x-cap';
+              span.textContent = 'x';
+              frag.appendChild(span);
+            }
+          });
+          textNode.replaceWith(frag);
+        });
+      };
+
+      wrapLowercaseX(document.body);
+    </script>
   </body>
 </html>

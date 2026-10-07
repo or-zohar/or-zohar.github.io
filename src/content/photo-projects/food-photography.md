@@ -1,10 +1,11 @@
 ---
 title: "FOOD PHOTOGRAPHY"
 description: "My path in photography began with a strong pull toward the kitchen. This is a collection of food photographs I made early on."
+credit: "2020"
 tags: []
 cover: "../../assets/photo-projects/food-photography/food-photography-03.jpg"
 featured: true
-order: 2
+order: -0.5
 ---
 
 ![](../../assets/photo-projects/food-photography/food-photography-01.jpg)
@@ -18,8 +19,6 @@ order: 2
 ![](../../assets/photo-projects/food-photography/food-photography-06.jpg)
 
 ![](../../assets/photo-projects/food-photography/food-photography-07.jpg)
-
-![](../../assets/photo-projects/food-photography/food-photography-08.jpg)
 
 ![](../../assets/photo-projects/food-photography/food-photography-09.jpg)
 

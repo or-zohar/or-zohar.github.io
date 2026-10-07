@@ -2,6 +2,8 @@
 // Homepage rotating gallery. Add more images to src/assets/gallery/
 // and list them here (in the order they should appear) to expand it.
 import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+import { withBase } from '@utils/url';
 import gallery1 from '@assets/gallery/gallery-1.jpg';
 import gallery2 from '@assets/gallery/gallery-2.jpg';
 import gallery3 from '@assets/gallery/gallery-3.jpg';
@@ -11,30 +13,70 @@ import gallery6 from '@assets/gallery/gallery-6.jpg';
 import gallery7 from '@assets/gallery/gallery-7.jpg';
 import gallery8 from '@assets/gallery/gallery-8.jpg';
 import gallery9 from '@assets/gallery/gallery-9.jpg';
+import gallery10 from '@assets/gallery/gallery-10.jpg';
+import gallery11 from '@assets/gallery/gallery-11.jpg';
+import gallery12 from '@assets/gallery/gallery-12.jpg';
+import gallery13 from '@assets/gallery/gallery-13.jpg';
+import gallery14 from '@assets/gallery/gallery-14.jpg';
 
-const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9];
+// Each photo links to the project it belongs to, opened on that same photo.
+// `asset` is the file name (without extension) of the photo inside the project.
+const entries = [
+  { src: gallery6, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-21' },
+  { src: gallery2, collection: 'photo-projects', slug: 'female-figures', asset: 'female-figures-29' },
+  { src: gallery3, collection: 'design-projects', slug: 'deep-blue', asset: 'deep-blue-02' },
+  { src: gallery4, collection: 'design-projects', slug: 'palace-hotel-new-logo', asset: 'palace-hotel-new-logo-01' },
+  { src: gallery5, collection: 'design-projects', slug: 'palace-hotel-research', asset: 'palace-hotel-research-01' },
+  { src: gallery1, collection: 'photo-projects', slug: 'male-figures', asset: 'male-figures-01' },
+  { src: gallery7, collection: 'photo-projects', slug: 'food-photography', asset: 'food-photography-03' },
+  { src: gallery8, collection: 'photo-projects', slug: 'food-photography', asset: 'food-photography-11' },
+  { src: gallery9, collection: 'design-projects', slug: 'memories-index', asset: 'memories-index-17' },
+  { src: gallery10, collection: 'photo-projects', slug: 'places-and-objects', asset: 'places-and-objects-07' },
+  { src: gallery11, collection: 'design-projects', slug: 'photo-action', asset: 'photo-action-01' },
+  { src: gallery13, collection: 'design-projects', slug: 'palace-hotel-new-logo', asset: 'palace-hotel-new-logo-08' },
+  { src: gallery14, collection: 'design-projects', slug: 'palace-hotel-new-logo', asset: 'palace-hotel-new-logo-09' },
+  { src: gallery12, collection: 'design-projects', slug: 'honney-pacage-design', asset: 'honney-pacage-design-01' },
+];
+
+// same slide order as the project page: cover (unless hidden), then the images in the body
+const images = await Promise.all(
+  entries.map(async ({ src, collection, slug, asset }) => {
+    const project = await getEntry(collection as 'photo-projects' | 'design-projects', slug);
+    const files = [
+      ...(project?.data.hideCoverOnDetail ? [] : [project?.data.cover.src ?? '']),
+      ...Array.from((project?.body ?? '').matchAll(/!\[[^\]]*\]\(([^)]+)\)/g), m => m[1]),
+    ];
+    const slide = files.findIndex(file => file.includes(`${asset}.`));
+    const query = slide > 0 ? `?image=${slide + 1}` : '';
+    return { src, href: withBase(`/${collection}/${slug}/${query}`) };
+  }),
+);
 ---
 
 <div class="gallery" data-gallery>
-  {images.map((src, i) => (
+  {images.map(({ src, href }, i) => (
     <Image
       src={src}
       alt=""
-      widths={[400, 800, 1200]}
-      sizes="(max-width: 640px) 90vw, 600px"
+      widths={[400, 800, 1200, 1600]}
+      sizes="(max-width: 640px) 90vw, 720px"
       quality={100}
       loading={i === 0 ? 'eager' : 'lazy'}
       class="gallery-image"
       data-active={i === 0}
+      data-href={href}
     />
   ))}
+  <button type="button" class="gallery-zone gallery-prev" aria-label="Previous image"></button>
+  <a class="gallery-zone gallery-open" href={images[0].href} aria-label="Open project"></a>
+  <button type="button" class="gallery-zone gallery-next" aria-label="Next image"></button>
 </div>
 
 <style>
   .gallery {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 720px;
     aspect-ratio: 4 / 3;
     margin-inline: auto;
   }
@@ -52,6 +94,32 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
   .gallery-image[data-active="true"] {
     opacity: 1;
   }
+
+  .gallery-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .gallery-prev {
+    left: 0;
+    cursor: w-resize;
+  }
+
+  .gallery-next {
+    right: 0;
+    cursor: e-resize;
+  }
+
+  .gallery-open {
+    left: 30%;
+    width: 40%;
+  }
 </style>
 
 <script>
@@ -61,11 +129,32 @@ const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gall
     const images = Array.from(gallery.querySelectorAll<HTMLElement>('.gallery-image'));
     if (images.length < 2) return;
 
+    const open = gallery.querySelector<HTMLAnchorElement>('.gallery-open');
     let current = 0;
-    setInterval(() => {
+    let timer: ReturnType<typeof setInterval>;
+
+    const show = (index: number) => {
       images[current].dataset.active = 'false';
-      current = (current + 1) % images.length;
+      current = (index + images.length) % images.length;
       images[current].dataset.active = 'true';
-    }, 4000);
+      if (open) open.href = images[current].dataset.href ?? open.href;
+    };
+
+    const restart = () => {
+      clearInterval(timer);
+      timer = setInterval(() => show(current + 1), 4000);
+    };
+
+    gallery.querySelector('.gallery-prev')?.addEventListener('click', () => {
+      show(current - 1);
+      restart();
+    });
+
+    gallery.querySelector('.gallery-next')?.addEventListener('click', () => {
+      show(current + 1);
+      restart();
+    });
+
+    restart();
   });
 </script>

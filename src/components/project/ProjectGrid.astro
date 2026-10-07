@@ -1,0 +1,126 @@
+---
+import { Image } from 'astro:assets';
+import { withBase } from '@utils/url';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  projects: CollectionEntry<'photo-projects'>[] | CollectionEntry<'design-projects'>[];
+  basePath: string;
+  heading: string;
+  id: string;
+  showHeading?: boolean;
+}
+
+const { projects, basePath, heading, id, showHeading = true } = Astro.props;
+---
+
+<section class="project-section" id={id}>
+  <h2 class={showHeading ? 'section-heading' : 'sr-only'}>{heading}</h2>
+  <ul class="project-grid" role="list">
+    {projects.map((project, i) => (
+      <li>
+        <a
+          href={project.data.externalUrl || withBase(`${basePath}/${project.slug}`)}
+          aria-label={project.data.title}
+        >
+          <Image
+            src={project.data.cover}
+            alt=""
+            widths={[300, 600, 900]}
+            sizes="(max-width: 640px) 60vw, 400px"
+            quality={100}
+            loading={i < 6 ? 'eager' : 'lazy'}
+          />
+          <span class="project-number">{String(i + 1).padStart(2, '0')}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .project-section {
+    --thumb-height: 215px;
+    padding: var(--space-lg) var(--space-lg) calc(var(--space-sm) + 0.875rem * 1.2);
+    scroll-margin-top: 3.6rem;
+  }
+
+  .project-section:first-of-type {
+    padding-top: 10px;
+  }
+
+  .project-section + .project-section {
+    padding-top: calc(var(--space-md) + 10px);
+  }
+
+  .project-section:last-of-type {
+    padding-bottom: var(--space-2xl);
+  }
+
+  /* heading kept for screen readers and the page outline, not drawn */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .section-heading {
+    margin: 0 0 var(--space-lg);
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  .project-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px calc(var(--space-lg) * 2);
+    align-items: flex-start;
+  }
+
+  .project-grid a {
+    display: block;
+    position: relative;
+  }
+
+  .project-grid img {
+    display: block;
+    height: var(--thumb-height);
+    width: auto;
+  }
+
+  .project-number {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: var(--space-sm);
+    font-size: 0.875rem;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .project-section {
+      --thumb-height: 140px;
+      padding-inline: var(--space-md);
+    }
+
+    .project-section:first-of-type {
+      padding-top: 10px;
+    }
+
+    .project-grid {
+      gap: 64px calc(var(--space-md) * 2);
+    }
+  }
+</style>

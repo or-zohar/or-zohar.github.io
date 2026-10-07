@@ -1,10 +1,11 @@
 ---
 title: "PAG ZINE"
 description: "A xerox zine made from photographs I took in the performers' room of the \"PAG\" party line."
+credit: "2025"
 tags: []
 cover: "../../assets/design-projects/pag-zine/pag-zine-01.jpg"
 featured: true
-order: 5
+order: 9
 ---
 
 ![](../../assets/design-projects/pag-zine/pag-zine-02.jpg)

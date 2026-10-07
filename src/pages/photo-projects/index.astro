@@ -1,21 +1,9 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import ProjectList from '@components/project/ProjectList.astro';
-import { getCollection } from 'astro:content';
+import ProjectsOverview from '@components/project/ProjectsOverview.astro';
 import { siteConfig } from '@config/site';
-
-const projects = (await getCollection('photo-projects'))
-  .sort((a, b) => a.data.order - b.data.order || (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
 ---
 
-<BaseLayout title={`Photo Projects — ${siteConfig.name}`} description="Photography projects.">
-  <section class="container">
-    <ProjectList projects={projects} basePath="/photo-projects" />
-  </section>
+<BaseLayout title={`Photography — ${siteConfig.name}`} description="Photography and direction projects.">
+  <ProjectsOverview page="photography" />
 </BaseLayout>
-
-<style>
-  section {
-    padding-bottom: var(--space-2xl);
-  }
-</style>

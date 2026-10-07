@@ -4,6 +4,7 @@ const projectSchema = ({ image }: { image: () => z.ZodType }) =>
   z.object({
     title: z.string(),
     description: z.string().optional(),
+    credit: z.string().optional(),
     date: z.date().optional(),
     tags: z.array(z.string()),
     role: z.string().optional(),
@@ -11,6 +12,7 @@ const projectSchema = ({ image }: { image: () => z.ZodType }) =>
     cover: image(),
     hideCoverOnDetail: z.boolean().default(false),
     featured: z.boolean().default(false),
+    section: z.enum(['default', 'direction']).default('default'),
     order: z.number().default(0),
     externalUrl: z.string().url().optional(),
   });

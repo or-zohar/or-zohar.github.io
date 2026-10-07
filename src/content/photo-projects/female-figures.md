@@ -1,6 +1,7 @@
 ---
 title: "FEMALE figures"
-description: "Portraits I've taken over the last seven years of family, friends, loves, and complete strangers, captured as special moments and emotions I was fortunate to witness. All shot on analog cameras, across various formats."
+description: "Portraits of the women in my life, taken over the last seven years. This series is about the bonds, the closeness and the distance between us. Shot on film, across various formats."
+credit: "2025"
 tags: []
 cover: "../../assets/photo-projects/female-figures/female-figures-01.jpg"
 featured: true
@@ -68,3 +69,13 @@ order: -1
 ![](../../assets/photo-projects/female-figures/female-figures-31.jpg)
 
 ![](../../assets/photo-projects/female-figures/female-figures-32.jpg)
+
+![](../../assets/photo-projects/female-figures/female-figures-33.jpg)
+
+![](../../assets/photo-projects/female-figures/female-figures-34.jpg)
+
+![](../../assets/photo-projects/female-figures/female-figures-35.jpg)
+
+![](../../assets/photo-projects/female-figures/female-figures-36.jpg)
+
+![](../../assets/photo-projects/female-figures/female-figures-37.jpg)

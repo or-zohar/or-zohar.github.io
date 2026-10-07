@@ -1,6 +1,7 @@
 ---
 title: "MALE figures"
-description: "Portraits I've taken over the last seven years of family, friends, loves, and complete strangers, captured as special moments and emotions I was fortunate to witness. All shot on analog cameras, across various formats."
+description: "Seven years of portraits of the men I've loved, known, and met by chance. This series explores masculinity and my personal feelings toward it. Shot on film, across various formats."
+credit: "2025"
 tags: []
 cover: "../../assets/photo-projects/male-figures/male-figures-01.jpg"
 featured: true
@@ -40,3 +41,23 @@ order: -2
 ![](../../assets/photo-projects/male-figures/male-figures-17.jpg)
 
 ![](../../assets/photo-projects/male-figures/male-figures-18.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-19.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-20.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-21.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-22.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-23.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-24.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-25.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-26.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-27.jpg)
+
+![](../../assets/photo-projects/male-figures/male-figures-28.jpg)

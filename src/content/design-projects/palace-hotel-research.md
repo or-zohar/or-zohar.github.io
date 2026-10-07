@@ -1,6 +1,7 @@
 ---
 title: "PALACE HOTEL research"
 description: "Research into the background of the legendary Palace Hotel in Jerusalem, as part of a rebranding project."
+credit: "Guided by: Sharon Etgar. 2026"
 tags: []
 cover: "../../assets/design-projects/palace-hotel-research/palace-hotel-research-01.jpg"
 featured: true
@@ -24,3 +25,5 @@ order: 4
 ![](../../assets/design-projects/palace-hotel-research/palace-hotel-research-09.jpg)
 
 ![](../../assets/design-projects/palace-hotel-research/palace-hotel-research-10.jpg)
+
+![](../../assets/design-projects/palace-hotel-research/palace-hotel-research-11.jpg)

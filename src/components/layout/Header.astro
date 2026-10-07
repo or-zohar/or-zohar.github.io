@@ -2,83 +2,172 @@
 import { siteConfig } from '@config/site';
 import { withBase } from '@utils/url';
 
-const year = new Date().getFullYear();
+interface Props {
+  projectTitle?: string;
+  projectDescription?: string;
+  projectCredit?: string;
+  backHref?: string;
+  hideIndex?: boolean;
+}
+
+const { projectTitle, projectCredit, backHref, hideIndex } = Astro.props;
+const projectDescription = Astro.props.projectDescription?.replaceAll('{mobile-break}', ' ');
+
 const home = withBase('/');
+const year = new Date().getFullYear();
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => {
-  const target = withBase(href).replace(/\/$/, '');
+  const target = withBase(href.split('#')[0]).replace(/\/$/, '');
   return currentPath === target || currentPath.startsWith(`${target}/`);
 };
 ---
 
 <header class="site-header">
-  <div class="container">
-    <p class="site-title">
-      <a href={home}>&copy; {year}, <span class="site-name">{siteConfig.name}</span></a>
-    </p>
+  <div class="header-inner">
+    {projectTitle ? (
+      <div class="project-id">
+        <p class="project-title">{projectTitle}</p>
+        {projectDescription && <p class="project-description">{projectDescription}</p>}
+        {projectCredit && <p class="project-credit">{projectCredit}</p>}
+      </div>
+    ) : (
+      <a href={home} class="site-name">&copy; {year}, {siteConfig.name}</a>
+    )}
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul role="list">
+        {backHref ? (
+          <>
+            {projectTitle && !hideIndex && <li><a href="#index" data-index-toggle aria-pressed="false">INDEX</a></li>}
+            <li><a href={withBase(backHref)} data-back>BACK</a></li>
+          </>
+        ) : (
+          [...siteConfig.nav.work, ...siteConfig.nav.pages].map(link => (
+            <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
+          ))
+        )}
+      </ul>
+    </nav>
   </div>
 </header>
-
-<nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
-    <ul class="nav-group" role="list">
-      {siteConfig.nav.work.map(link => (
-        <li><a href={withBase(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a></li>
-      ))}
-    </ul>
-  </div>
-</nav>
 
 <style>
   .site-header {
     position: sticky;
     top: 0;
     z-index: 50;
-    padding-top: calc(var(--space-2xl) / 2);
-    padding-bottom: var(--space-md);
-    text-align: center;
-    mix-blend-mode: difference;
-    color: #cac8c6;
+    background: var(--color-bg);
   }
 
-  .site-header a {
-    color: #cac8c6;
-  }
-
-  .site-title {
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-
-  @media (max-width: 640px) {
-    .site-title {
-      font-size: 1.2rem;
-    }
+  .header-inner {
+    position: relative;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    column-gap: var(--space-md);
   }
 
   .site-name {
+    font-size: 1rem;
+    color: var(--color-text);
     text-transform: uppercase;
   }
 
-  .site-nav {
-    padding-bottom: var(--space-xl);
-    padding-top: var(--space-lg);
-    text-align: center;
+  .project-id {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-lg);
+    width: calc(100% / 3 - var(--space-lg));
+    z-index: 1;
   }
 
-  .nav-group {
+  .project-title,
+  .project-description,
+  .project-credit {
+    font-size: 16px;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  :global(html[data-index-open]) .project-description,
+  :global(html[data-index-open]) .project-credit {
+    display: none;
+  }
+
+  .project-description {
+    white-space: pre-line;
+    opacity: 0.6;
+    margin-top: var(--space-md);
+  }
+
+  /* same gap under the description as between the title and the description */
+  .project-credit {
+    opacity: 0.6;
+    margin-top: var(--space-md);
+  }
+
+  .site-nav {
+    margin-left: auto;
+  }
+
+  .site-nav ul {
+    display: flex;
+    gap: calc(var(--space-lg) * 0.7);
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .nav-group li {
-    line-height: 1.6;
-  }
-
-  .nav-group a[aria-current="page"] {
+  .site-nav a[aria-current="page"],
+  .site-nav a[aria-pressed="true"] {
     opacity: 0.6;
   }
+
+  @media (max-width: 640px) {
+    .header-inner {
+      flex-direction: column;
+      align-items: center;
+      row-gap: var(--space-sm);
+      padding-inline: var(--space-md);
+      text-align: center;
+    }
+
+    .project-id {
+      position: static;
+      width: auto;
+    }
+
+    .site-nav {
+      margin-left: 0;
+    }
+
+    .site-nav ul {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: calc(var(--space-md) * 0.7);
+    }
+
+    .site-name {
+      font-size: 0.875rem;
+    }
+  }
 </style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const syncHeaderHeight = () => {
+    if (header) document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+  };
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-back]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (window.history.length > 1) {
+        event.preventDefault();
+        window.history.back();
+      }
+    });
+  });
+</script>

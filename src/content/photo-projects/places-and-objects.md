@@ -1,8 +1,9 @@
 ---
-title: "\"Places and Objects\""
+title: "\"Places, Objects, Flowers\""
 description: "Landscape and still-life photographs shot on film. A lasting connection to open spaces and natural materials."
+credit: "2025"
 tags: []
-cover: "../../assets/photo-projects/places-and-objects/places-and-objects-12.jpg"
+cover: "../../assets/photo-projects/places-and-objects/places-and-objects-21.jpg"
 featured: true
 order: 0
 ---
@@ -45,7 +46,7 @@ order: 0
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-20.jpg)
 
-![](../../assets/photo-projects/places-and-objects/places-and-objects-21.jpg)
+![](../../assets/photo-projects/places-and-objects/places-and-objects-12.jpg)
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-22.jpg)
 
@@ -68,3 +69,17 @@ order: 0
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-31.jpg)
 
 ![](../../assets/photo-projects/places-and-objects/places-and-objects-32.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-33.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-34.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-35.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-36.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-37.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-38.jpg)
+
+![](../../assets/photo-projects/places-and-objects/places-and-objects-39.jpg)

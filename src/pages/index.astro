@@ -1,17 +1,27 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Gallery from '@components/home/Gallery.astro';
-import PagesNav from '@components/layout/PagesNav.astro';
 import { siteConfig } from '@config/site';
 ---
 
 <BaseLayout title={siteConfig.title} description={siteConfig.description}>
-  <Gallery />
-  <PagesNav />
+  <div class="hero">
+    <Gallery />
+  </div>
 </BaseLayout>
 
 <style>
-  main {
-    padding-bottom: var(--space-2xl);
+  :global(main) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* the sticky header takes space above; offset it so media is centred on the whole viewport */
+    padding-bottom: var(--header-h, 3.6rem);
   }
 </style>
