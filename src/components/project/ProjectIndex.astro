@@ -7,30 +7,45 @@ interface Props {
 }
 
 const { slides } = Astro.props;
+
+// Phone layout: rows of three that fill the screen edge to edge (see ProjectGrid.astro).
+const PER_ROW = 3;
+const aspects = slides.map(slide => (slide.type === 'image' ? slide.src.width / slide.src.height : 16 / 9));
+const average = aspects.reduce((sum, a) => sum + a, 0) / Math.max(aspects.length, 1);
+const rows = Array.from({ length: Math.ceil(slides.length / PER_ROW) }, (_, r) =>
+  slides.slice(r * PER_ROW, r * PER_ROW + PER_ROW).map((slide, j) => ({ slide, i: r * PER_ROW + j })),
+);
 ---
 
 <section class="index" data-index hidden aria-label="Project index">
-  <ul class="index-grid" role="list">
-    {slides.map((slide, i) => (
-      <li>
-        <button type="button" data-index-item={i} aria-label={`Show image ${i + 1}`}>
-          {slide.type === 'image' ? (
-            <Image
-              src={slide.src}
-              alt=""
-              widths={[300, 600, 900]}
-              sizes="(max-width: 640px) 60vw, 400px"
-              quality={100}
-              loading={i < 6 ? 'eager' : 'lazy'}
-            />
-          ) : (
-            <img src={slide.poster} alt="" loading={i < 6 ? 'eager' : 'lazy'} />
-          )}
-          <span class="index-number">{String(i + 1).padStart(2, '0')}</span>
-        </button>
-      </li>
+  <div class="index-grid" role="list">
+    {rows.map(row => (
+      <div class="grid-row" role="presentation">
+        {row.map(({ slide, i }) => (
+          <div class="grid-item" role="listitem" style={`--a: ${aspects[i]}`}>
+            <button type="button" data-index-item={i} aria-label={`Show image ${i + 1}`}>
+              {slide.type === 'image' ? (
+                <Image
+                  src={slide.src}
+                  alt=""
+                  widths={[300, 600, 900]}
+                  sizes="(max-width: 640px) 34vw, 400px"
+                  quality={100}
+                  loading={i < 6 ? 'eager' : 'lazy'}
+                />
+              ) : (
+                <img src={slide.poster} alt="" loading={i < 6 ? 'eager' : 'lazy'} />
+              )}
+              <span class="index-number">{String(i + 1).padStart(2, '0')}</span>
+            </button>
+          </div>
+        ))}
+        {Array.from({ length: PER_ROW - row.length }, () => (
+          <div class="grid-filler" aria-hidden="true" style={`--a: ${average}`}></div>
+        ))}
+      </div>
     ))}
-  </ul>
+  </div>
 </section>
 
 <style>
@@ -44,13 +59,20 @@ const { slides } = Astro.props;
   }
 
   .index-grid {
-    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 64px calc(var(--space-lg) * 2);
     align-items: flex-start;
+  }
+
+  .grid-row {
+    display: contents;
+  }
+
+  .grid-filler {
+    display: none;
   }
 
   .index-grid button {
@@ -81,13 +103,42 @@ const { slides } = Astro.props;
   }
 
   @media (max-width: 640px) {
+    /* three images per row, edge to edge; row heights differ with the images' proportions */
     .index {
-      --thumb-height: 140px;
-      padding-inline: var(--space-md);
+      padding-inline: 0;
     }
 
     .index-grid {
-      gap: 64px calc(var(--space-md) * 2);
+      display: block;
+    }
+
+    .grid-row {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: 64px;
+    }
+
+    .grid-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .grid-item,
+    .grid-filler {
+      flex: var(--a) 1 0;
+      min-width: 0;
+    }
+
+    .grid-filler {
+      display: block;
+    }
+
+    .index-grid button {
+      width: 100%;
+    }
+
+    .index-grid img {
+      width: 100%;
+      height: auto;
     }
   }
 </style>
