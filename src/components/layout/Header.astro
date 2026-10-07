@@ -34,7 +34,7 @@ const isActive = (href: string) => {
     ) : (
       <a href={home} class="site-name">&copy; {year}, {siteConfig.name}</a>
     )}
-    <nav class="site-nav" aria-label="Main navigation">
+    <nav class={backHref ? 'site-nav' : 'site-nav site-nav-main'} aria-label="Main navigation">
       <ul role="list">
         {backHref ? (
           <>
@@ -149,6 +149,22 @@ const isActive = (href: string) => {
     }
 
     .site-name {
+      font-size: 0.875rem;
+    }
+
+    /* phone: the main links (PHOTOGRAPHY / DESIGN / INFO) sit at the bottom of the screen,
+       in the same size as the site name; BACK / INDEX on project pages stay at the top */
+    .site-nav-main {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      padding: var(--space-md) var(--space-md) calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+      background: var(--color-bg);
+    }
+
+    .site-nav-main a {
       font-size: 0.875rem;
     }
   }
