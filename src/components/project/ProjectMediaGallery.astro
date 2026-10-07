@@ -16,7 +16,7 @@ const videoOnly = slides.length > 0 && slides.every(slide => slide.type === 'vid
       <Image
         src={slide.src}
         alt={slide.alt}
-        widths={slide.src.width > 2400 ? [400, 800, 1200, 1600, 2400, 3200] : [400, 800, 1200, 1600]}
+        widths={slide.src.width > 4800 ? [400, 800, 1200, 1600, 2400, 3200, 4800, 6400] : slide.src.width > 2400 ? [400, 800, 1200, 1600, 2400, 3200] : [400, 800, 1200, 1600]}
         sizes="(max-width: 640px) 90vw, 720px"
         quality={100}
         loading={i === 0 ? 'eager' : 'lazy'}
