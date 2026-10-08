@@ -136,6 +136,19 @@ const isActive = (href: string) => {
     .project-id {
       position: static;
       width: auto;
+      align-self: stretch;
+    }
+
+    .project-title,
+    .project-description,
+    .project-credit {
+      font-size: 0.875rem;
+    }
+
+    /* phone: the title stays centred, the description (and the credit under it) is left-aligned */
+    .project-description,
+    .project-credit {
+      text-align: left;
     }
 
     .site-nav ul {

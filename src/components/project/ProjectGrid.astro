@@ -9,13 +9,15 @@ interface Props {
   heading: string;
   id: string;
   showHeading?: boolean;
+  /** how many projects share one row on a phone (default 3) */
+  perRow?: number;
 }
 
-const { projects, basePath, heading, id, showHeading = true } = Astro.props;
+const { projects, basePath, heading, id, showHeading = true, perRow = 3 } = Astro.props;
 
-// Phone layout: rows of three that fill the screen edge to edge (row height follows the
+// Phone layout: rows of `perRow` that fill the screen edge to edge (row height follows the
 // images' proportions). On wider screens the rows are transparent (display: contents).
-const PER_ROW = 3;
+const PER_ROW = perRow;
 const aspectOf = (project: (typeof projects)[number]) => {
   const cover = project.data.cover as ImageMetadata;
   return cover.width / cover.height;
@@ -42,7 +44,7 @@ const rows = Array.from({ length: Math.ceil(projects.length / PER_ROW) }, (_, r)
                 src={project.data.cover}
                 alt=""
                 widths={[300, 600, 900]}
-                sizes="(max-width: 640px) 34vw, 400px"
+                sizes={`(max-width: 640px) ${Math.ceil(100 / PER_ROW) + 1}vw, 400px`}
                 quality={100}
                 loading={i < 6 ? 'eager' : 'lazy'}
               />
@@ -148,6 +150,10 @@ const rows = Array.from({ length: Math.ceil(projects.length / PER_ROW) }, (_, r)
 
     .project-grid {
       display: block;
+    }
+
+    .section-heading {
+      font-size: 0.875rem;
     }
 
     .grid-row {
